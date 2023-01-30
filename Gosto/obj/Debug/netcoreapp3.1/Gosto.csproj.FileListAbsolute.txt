@@ -163,3 +163,4 @@ C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\B
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\CategoryFindBlog.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\TagFindBlog.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogSearchPartialView.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductListPartial.cshtml.g.cs
