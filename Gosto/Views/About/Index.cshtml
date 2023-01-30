@@ -1,0 +1,250 @@
+﻿@model AboutVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="overflow-hidden">
+    <div class="headd text-center" style="background-image: url('/assets/img/Our-team/@Model.HiGosto.BackImage')">
+        <div class="container">
+            <div class="row">
+                <div class="inffo">
+                    <h4 data-aos="fade-down">Hi, Gosto Store</h4>
+                    <h1 class="team-title" data-aos="fade-left">@Model.HiGosto.Title</h1>
+                    <p class="team-description" data-aos="fade-right">
+                        @Model.HiGosto.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="welcome" style="background-image:url('/assets/img/About/bg_about.jpg') ;">
+        <div class="container" data-aos="fade-left">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="modern pt-4">
+                        <h5 class="fw-bold">WELCOME TO GOSTO STORE</h5>
+                        <h3 class="fw-bold">@Model.WelcomeGosto.Title</h3>
+                        <p>
+                          @Model.WelcomeGosto.Description
+                        </p>
+                        <div class="founder"> <h5 class="creater-name d-inline fw-bold">Algistino</h5> <span class="">-   Founder Of Gosto Store</span>  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="overflow-hidden">
+    <div class="services" data-aos="fade-right">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="all text-center">
+                    <h5 class="fw-bold">WHAT WE OFFER SERVICES</h5>
+                    <h3 class="fw-bold">AMAZING PERFORMANCE</h3>
+                    <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="performance" data-aos="fade-up">
+
+        <div class="containerr">
+            <div class="row">
+
+
+                @foreach (var service in Model.Services)
+                {
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="img">
+                                <img src="~/assets/img/About/@service.Image" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@service.Title</h5>
+                                <p class="card-text">
+                                    @service.Description
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="texnology" data-aos="fade-right">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="all text-center">
+                    <h5 class="fw-bold">TECHNOLOGY INDEX</h5>
+                    <h3 class="fw-bold">LET’S GET CREATIVE</h3>
+                    <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="creative" data-aos="fade-up">
+        <div class="containerr">
+            <div class="row">
+                @foreach (var texnology in Model.Texnologies)
+                {
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="img">
+                                <img src="~/assets/img/About/@texnology.Image" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body d-flex">
+                                <div class="left">
+                                    <h5 class="card-title">@texnology.Title1</h5>
+                                    <p class="card-text">@texnology.Description1</p>
+                                </div>
+                                <div class="right">
+                                    <h5 class="card-title">@texnology.Title2</h5>
+                                    <p class="card-text">@texnology.Description2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="brand" data-aos="fade-left">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="all text-center">
+                    <h5 class="fw-bold">WHO OUR CLIENTS</h5>
+                    <h3 class="fw-bold">OUR IMPORTANT PARTNERS</h3>
+                    <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="overflow-hidden">
+    <div class="brand-list py-5 pb-5" data-aos="fade-up">
+        <div class="containerr">
+            <div class="d-flex flex-wrap">
+                @foreach (var brand in Model.Brands)
+                {
+                    <div class="col-lg-4 col-4">
+
+                        <div class="img">
+                            <img src="~/assets/img/Brand/@brand.Image" class="card-img-top" alt="">
+                        </div>
+
+                    </div>
+                }
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="location" data-aos="fade-right">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="all text-center">
+                    <h5 class="fw-bold">LOCATION STORE</h5>
+                    <h3 class="fw-bold">LOOKING FOR GOSTO</h3>
+                    <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="gosto-location" data-aos="fade-up">
+
+        <div class="containerr">
+            <div class="row">
+                @foreach (var location in Model.Locations)
+                {
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="img">
+                                <img src="~/assets/img/About/@location.Image" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title city-name">@location.Title</h5>
+                                <p class="card-text gosto-adress"><span>Add: </span>@location.Adress</p>
+                                <p class="card-text gosto-phone"><span>Phone: </span>@location.Phone</p>
+                                <p class="card-text gosto-email"><span>Email: </span>@location.Email</p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="gosto-info" data-aos="fade-up">
+        <div class="containerr">
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="pro">
+                        <h4><i class="fa-regular fa-circle"></i></h4>
+                        <h5>ORIGINAL PRODUCTS</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pro">
+                        <h4><i class="fa-regular fa-circle"></i></h4>
+                        <h5>ORIGINAL PRODUCTS</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pro">
+                        <h4><i class="fa-regular fa-circle"></i></h4>
+                        <h5>FREE SHIPPING</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

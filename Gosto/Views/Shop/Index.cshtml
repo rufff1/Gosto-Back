@@ -1,0 +1,544 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<section>
+    <div class="shop-list">
+        <div class="containerr">
+            <div class="row">
+
+
+                <div class="col-lg-12">
+                    <div class="path">
+                        <a class="d-inline"asp-controller="home" asp-action="index">Home</a>
+                        /
+                        <a class="d-inline">Product</a>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2">
+
+                    <div class="product-category">
+                        <div class="box">
+                            <div class="txt align-items-center d-flex justify-content-between">
+                                <h5>PRODUCT CATEGORIES</h5>
+                            </div>
+                            <div class="bdy">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">All Categories 61</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Accessories 12</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Decor (12)</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href=""> Decor & Lighting (12) </a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href=""> Dining & Kitchen (4)</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Office Furniture (2)</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href=""> Outdoor & Gift (8)</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Sectional Sofas</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Tables & Chair</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="brands">
+                        <div class="box">
+                            <div class="txt align-items-center d-flex justify-content-between">
+                                <h5>FILTER BY BRANDS</h5>
+                            </div>
+                            <div class="bdy">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Galliano</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Paul Gaultier</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Georgine</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Matthew Christopher</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Chrome Hearts</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Clements Ribeiro</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">Dominique Aurientis</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="color">
+                        <div class="box">
+                            <div class="txt align-items-center d-flex justify-content-between pb-3">
+                                <h5>FILTER BY COLOR</h5>
+                            </div>
+                            <div class="bdy">
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check1" name="check1">
+                                        <label class="sb-checkbox__label sb-checkbox__label--green" for="check1">
+                                        </label>
+                                    </div>
+                                    <a href="">Green</a>
+                                </div>
+                                <br>
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check2" name="check2">
+                                        <label class="sb-checkbox__label sb-checkbox__label--red" for="check2">
+                                        </label>
+                                    </div>
+                                    <a href="">Red</a>
+                                </div>
+                                <br>
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check3" name="check3">
+                                        <label class="sb-checkbox__label sb-checkbox__label--blue" for="check3">
+                                        </label>
+                                    </div>
+                                    <a href="">Blue</a>
+                                </div>
+                                <br>
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check4" name="check4">
+                                        <label class="sb-checkbox__label sb-checkbox__label--orange" for="check4">
+                                        </label>
+                                    </div>
+                                    <a href="">Orange</a>
+                                </div>
+                                <br>
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check5" name="check5">
+                                        <label class="sb-checkbox__label sb-checkbox__label--black" for="check5">
+                                        </label>
+                                    </div>
+
+                                    <a href="">Black</a>
+                                </div>
+                                <br>
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check6" name="check6">
+                                        <label class="sb-checkbox__label sb-checkbox__label--gray" for="check6">
+                                        </label>
+                                    </div>
+                                    <a href="">Gray</a>
+                                </div>
+
+                                <br>
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check7" name="check7">
+                                        <label class="sb-checkbox__label sb-checkbox__label--white" for="check7">
+                                        </label>
+                                    </div>
+                                    <a href="">White</a>
+                                </div>
+
+                                <br>
+                                <div class="chk align-items-center">
+                                    <div class="sb-checkbox">
+                                        <input type="checkbox" class="sb-checkbox__input" id="check8" name="check8">
+                                        <label class="sb-checkbox__label sb-checkbox__label--brown" for="check8">
+                                        </label>
+                                    </div>
+                                    <a href="">Brown</a>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="price">
+                        <div class="box">
+                            <div class="txt align-items-center d-flex justify-content-between pb-3">
+                                <h5>FILTER BY PRICE</h5>
+                            </div>
+                            <div class="bdy">
+
+                                <price-range currency="$">
+                                    <div>
+                                        <div>
+                                            <input name="price-from"
+                                                   type="range"
+                                                   min="0"
+                                                   max="1000"
+                                                   step="1"
+                                                   value="25"
+                                                   aria-label="From" />
+                                            <input name="price-to"
+                                                   type="range"
+                                                   min="0"
+                                                   max="1000"
+                                                   step="1"
+                                                   value="75"
+                                                   aria-label="To" />
+                                        </div>
+                                    </div>
+                                    <output>
+                                        output
+                                    </output>
+                                </price-range>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="size">
+                        <div class="box">
+                            <div class="txt align-items-center d-flex justify-content-between">
+                                <h5>FILTER BY SIZE</h5>
+                            </div>
+                            <div class="bdy">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">20</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">30</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">40</a>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <a href="">50</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="result text-end">
+                        <span>Showing 1-12 of 84 results</span>
+                        <select class="ms-4 " name="" id="">
+                            <option selected value="">Short by Latest</option>
+                            <option value="">Short by Oldest</option>
+                            <option value="">Short by Name</option>
+                            <option value="">Short by Price</option>
+                        </select>
+                    </div>
+
+                    <div class="product mt-5">
+                        <div class="row">
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="1">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/4.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/4-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Upholstered Simple</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€65.00</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="2">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/12.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/12-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+
+                                        </ul>
+                                        <span class="discount-product">-12%</span>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Bellhop Portable Table Lamp</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                            <span class="price-sale">€21.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="3">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/13.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/13-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">The Round Dorm</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="4">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/20.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/20-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Unika Pendant Lamp</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="5">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product//17.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/17-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Cotton Crewneck Sweater</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="6">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/18.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/18-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Unfold Pendant Lamp</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card" id="7">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/23.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/23-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Upholstered Simple</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="8">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/3.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/3-1.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Unfold Pendant Lamp</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-6 col-sm-4">
+                                <div class="card " id="9">
+                                    <div class="product-image">
+                                        <a href="shop-detail.html">
+                                            <img class="first-image" src="~/assets/img/Product/6-1.jpg" alt="product">
+                                            <img class="second-image" src="~/assets/img/Product/6.jpg" alt="product">
+                                        </a>
+                                        <ul class="product-meta">
+                                            <li><a href="#"><i class="fa-solid fa-store"></i></a></li>
+                                            <li><a href="/shop-detail.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                                            <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="product-content">
+                                        <h4 class="product-title"><a href="shop-detail.html">Unfold Pendant Lamp</a></h4>
+                                        <div class="product-price">
+                                            <span class="regular-price ">€23.90</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

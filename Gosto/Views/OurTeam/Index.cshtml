@@ -1,0 +1,159 @@
+﻿@model OurTeamVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<section>
+    <div class="head text-center" style="background-image: url('/assets/img/Our-team/bg-ourteam.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="inffo">
+                    <h4>Perfect Target</h4>
+                    <h1 class="team-title">@Model.OurTeam.Title</h1>
+                    <p class="team-description">
+                       @Model.OurTeam.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="team-head mt-2">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="all text-center">
+                    <h5 class="fw-bold">OUR PERFECT TEAM</h5>
+                    <h3 class="fw-bold">AWESOMENESS PEOPLE</h3>
+                    <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="our-team mt-3">
+        <div class="containerr">
+            <div class="row">
+                @foreach (var team in Model.Teams)
+                {
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="img text-center">
+                            <img   src="~/assets/img/Our-team/@team.Image" class="card-img-top" alt="">
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="team-name">@team.FullName</h4>
+                            <h5 class="team-position">@team.Position</h5>
+                            <p class="team-description">
+                                @team.Info
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                }
+
+              
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overflow-hidden">
+    <div class="teamwork ">
+        <div class="row">
+            @foreach (var ourTeamBackImage in Model.OurTeamBackImages)
+            {
+
+            <div class="col-lg-4">
+                <div class="card ">
+                    <div class="img">
+                        <img   src="~/assets/img/Our-team/@ourTeamBackImage.Image" alt="">
+                    </div>
+                </div>
+            </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="creater ">
+        <div class="containerr">
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="img">
+                            <img   src="~/assets/img/Our-team/@Model.CreateTrend.BackImage" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card ">
+                        <div class="title">
+                            <h5 class="fw-bold">ENDLESS PASSION</h5>
+                            <h3 class="fw-bold pb-2">@Model.CreateTrend.Title</h3>
+                            <p>
+                   @Html.Raw(Model.CreateTrend.Description)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="team-testimonial">
+        <div class="containerr ">
+            <div class="testimonial-slider overflow-hidden">
+
+                @foreach (var item in Model.Teams)
+                {
+                <div class="card">
+                    <div class="info">
+                        <div class="img">
+                            <img   src="~/assets/img/Our-team/@item.Image" alt="testimonial">
+                        </div>
+                        <div class="content mt-5">
+                            <p>
+                             @Html.Raw(item.Reply)
+                            </p>
+                        </div>
+                        <div class="author mt-5">
+                            <h4>@item.FullName</h4>
+                        </div>
+                        <div class="position mt-5`">
+                            <h5>@item.Position</h5>
+                        </div>
+                    </div>
+
+                </div>
+
+                }
+
+
+               
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="clip">
+        <div class="img">
+            <img  src="~/assets/img/Our-team/our-team-testimonial.jpg" alt="">
+        </div>
+    </div>
+</section>
+

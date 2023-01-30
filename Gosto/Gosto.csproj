@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20230127141518_CreatedBlogTagTable.cs" />
+    <Compile Remove="Migrations\20230127141518_CreatedBlogTagTable.Designer.cs" />
+    <Compile Remove="Migrations\20230128202914_CreatedBrandTable.cs" />
+    <Compile Remove="Migrations\20230128202914_CreatedBrandTable.Designer.cs" />
+    <Compile Remove="Migrations\20230128205951_CreatedLocationTable.cs" />
+    <Compile Remove="Migrations\20230128205951_CreatedLocationTable.Designer.cs" />
+    <Compile Remove="Migrations\20230128220459_CreatedOurTeamTable.cs" />
+    <Compile Remove="Migrations\20230128220459_CreatedOurTeamTable.Designer.cs" />
+    <Compile Remove="Migrations\20230128231448_CreatedTeamTable.cs" />
+    <Compile Remove="Migrations\20230128231448_CreatedTeamTable.Designer.cs" />
+    <Compile Remove="Migrations\20230129135131_CreatedOurTeamBackImagesTable.cs" />
+    <Compile Remove="Migrations\20230129135131_CreatedOurTeamBackImagesTable.Designer.cs" />
+    <Compile Remove="Migrations\20230129135525_CreatedTrendTable.cs" />
+    <Compile Remove="Migrations\20230129135525_CreatedTrendTable.Designer.cs" />
+    <Compile Remove="Migrations\20230129213523_CreatedProductCategory.cs" />
+    <Compile Remove="Migrations\20230129213523_CreatedProductCategory.Designer.cs" />
+    <Compile Remove="Migrations\20230129215143_UpdateBrandTable.cs" />
+    <Compile Remove="Migrations\20230129215143_UpdateBrandTable.Designer.cs" />
+    <Compile Remove="Migrations\20230129222946_CreatedProductTableAndRelation.cs" />
+    <Compile Remove="Migrations\20230129222946_CreatedProductTableAndRelation.Designer.cs" />
+    <Compile Remove="Migrations\20230129223208_CreatedProductTableAndRelation.cs" />
+    <Compile Remove="Migrations\20230129223208_CreatedProductTableAndRelation.Designer.cs" />
+    <Compile Remove="Migrations\20230129224737_UpdateBrandTable.cs" />
+    <Compile Remove="Migrations\20230129224737_UpdateBrandTable.Designer.cs" />
+    <Compile Remove="Migrations\20230129225607_CreatedProductTableAndRelation.cs" />
+    <Compile Remove="Migrations\20230129225607_CreatedProductTableAndRelation.Designer.cs" />
+    <Compile Remove="Migrations\20230129225956_CreatedProductTableAndRelation.cs" />
+    <Compile Remove="Migrations\20230129225956_CreatedProductTableAndRelation.Designer.cs" />
+    <Compile Remove="Migrations\20230129230048_CreatedColorTableAndRelation.cs" />
+    <Compile Remove="Migrations\20230129230048_CreatedColorTableAndRelation.Designer.cs" />
+    <Compile Remove="Migrations\20230129230158_CreatedColorTableAndRelation.cs" />
+    <Compile Remove="Migrations\20230129230158_CreatedColorTableAndRelation.Designer.cs" />
+    <Compile Remove="Migrations\20230129230256_CreatedColorsTableAndRelation.cs" />
+    <Compile Remove="Migrations\20230129230256_CreatedColorsTableAndRelation.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+</Project>

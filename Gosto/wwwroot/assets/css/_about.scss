@@ -1,0 +1,296 @@
+.headd{
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    h4{
+        color:antiquewhite;
+    }
+    h1{
+        color: antiquewhite;
+        font-size: 64px;;
+    }
+   p{
+    width: 64%;
+    color:antiquewhite;
+    margin-left: 19%;
+    line-height: 1.8;
+    font-size: 18px;
+   }
+   .inffo{
+    margin-top: 20%;
+   }
+
+}
+
+
+
+.welcome{
+    text-align: center;
+    height: 50vh;
+.modern{
+    margin-top: 3%;
+    h5{
+      color: #C6452C;
+    }
+    h3{
+      color: #0A2748;
+    }
+    p{
+      font-style: italic;
+      line-height: 2;
+      font-size: 19px;
+      color: darkgrey;
+    }
+  }
+}
+
+
+.services{
+    background-color: #F6F7F9;
+    padding-top: 4%;
+    h5{
+      color: #C6452C;
+    }
+    h3{
+      color: #0A2748;
+    }
+    p{
+      font-style: italic;
+    }
+  }  
+
+.performance{
+    padding-top: 3%;
+    padding-bottom: 4%;
+    background-color: #F6F7F9;
+    .card{
+        box-shadow:  2px 2px 4px 0px grey;;
+        .img{
+             overflow: hidden;
+            }
+            border: none;
+            p{
+                line-height: 2;
+                font-style: italic;
+                color: #0A2748;
+                padding: 20px 0;
+                width: 80%;
+            }
+            h5{
+                font-weight: bold;
+                color: #0A2748;
+            }
+            img{
+
+                transition: .6s ;
+            }
+            img:hover{
+            transform: scale(1.2);
+        }
+    }
+}
+
+.texnology{
+   margin-top: 3%;
+    padding-top: 4%;
+    h5{
+      color: #C6452C;
+    }
+    h3{
+      color: #0A2748;
+    }
+    p{
+      font-style: italic;
+    }
+  } 
+
+  .creative{
+    padding-top: 3%;
+    padding-bottom: 4%;
+
+    .card{
+     
+        .img{
+             overflow: hidden;
+            }
+            border: none;
+            p{
+                line-height: 2;
+                font-style: italic;
+                color: #0A2748;
+                
+                padding: 20px 0;
+                width: 80%;
+            }
+            h5{
+                font-weight: bold;
+                color: #0A2748;
+            }
+            img{
+
+                transition: .6s ;
+            }
+            img:hover{
+            transform: scale(1.2);
+        }
+    }
+  }
+
+  .brand{
+    background-color: #F6F8FA;
+    margin-top: 3%;
+     padding-top: 4%;
+     h5{
+       color: #C6452C;
+     }
+     h3{
+       color: #0A2748;
+     }
+     p{
+       font-style: italic;
+     }
+   } 
+ 
+   .brand-list{
+ 
+    background-color: #F6F8FA;
+     
+          .img{
+            border: 1px solid rgb(194, 194, 194);
+         
+         
+             width: 107%;
+    height: 171px;
+    margin: auto;
+    cursor: pointer;
+         
+       
+           img{
+            margin-left: 35%;
+            margin-top: 11%;
+        width: 28%;
+           }
+          }
+   
+ 
+  
+  }
+
+  .location{
+    margin-top: 3%;
+     padding-top: 4%;
+     h5{
+       color: #C6452C;
+     }
+     h3{
+       color: #0A2748;
+     }
+     p{
+       font-style: italic;
+     }
+   } 
+ 
+
+   .gosto-location{
+    .card{
+      border: none;
+      .img{
+        overflow: hidden;
+       }
+       img{
+
+        transition: .6s ;
+    }
+    img:hover{
+    transform: scale(1.2);
+}
+      h5{
+        color: #0A2748;
+        font-weight: bold;
+        padding-bottom: 17px;
+      }
+      p{
+        color: #0A2748;
+      }
+    }
+   }
+
+   .gosto-info{
+    margin-top: 3%;
+    padding-top: 4%;
+    padding-bottom: 6%;
+    background-color: #C6452C;
+     
+    .pro{
+      border-bottom: 2px solid white;
+      h4{
+        color: white;
+        padding-bottom: 40px;
+      }
+      h5{
+        color: white;
+        font-weight: bold;
+        padding-bottom: 25px;
+      }
+      p{
+        color: white;
+        padding-bottom: 40px;
+      }
+    }
+   }
+
+
+   @media (max-width:576px){
+
+
+   
+
+  
+    
+         .services{
+            margin-top: 10%;
+         }
+         .performance{
+          .card{
+            margin-top: 10px;
+          }
+         }
+        .gosto-location{
+            .card{
+              margin-top: 10px;
+                 }
+         }
+
+  .brand-list{
+ 
+      .img{
+        img{
+          margin-left: 6%;
+          margin-top: 44%;
+          width: 88%;      
+        }
+      }
+    
+  }
+   }
+
+   @media (min-width:578px) and (max-width:768px){
+
+    
+    .performance{
+      .card{
+        margin-top: 10px;
+      }
+     }
+   
+    .gosto-location{
+        .card{
+          margin-top: 10px;
+             }
+     }
+     .brand-list .img img {
+      margin-left: 12%;
+      margin-top: 38%;
+      width: 83%;
+  }
+   }

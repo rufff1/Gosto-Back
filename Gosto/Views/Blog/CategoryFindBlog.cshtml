@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Blog>
+@{
+        ViewData["Title"] = "CategoryFindBlog";
+}
+
+<section>
+    <div class="blog-list" style="margin-top:5%">
+        <div class="containerr">
+            <div class="row">
+              
+
+                @foreach (var blog in Model)
+                {
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="img">
+                                <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id">
+
+                                    <img src="~/assets/img/Blog/@blog.Image" class="card-img-top" alt="">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <span class="blog-category"><a href="" tabindex="0">@blog.BlogCategory</a></span>
+                                <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id"><h5 class="card-title">@blog.Title</h5></a>
+                                <p class="card-text">
+                                    @if (blog.Description1.Length > 60)
+                                    {
+                                        @blog.Description1.Substring(0, 60);
+                                    }
+                                    else
+                                    {
+                                        @blog.Description1}
+                                </p>
+                                <p class="blog-date">Post Date <span>@blog.BlogTime.ToString("M MMMM yyyy")</span></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</section>
+

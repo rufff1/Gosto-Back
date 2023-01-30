@@ -1,0 +1,217 @@
+.head{
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    h4{
+        color:antiquewhite;
+    }
+    h1{
+        color: antiquewhite;
+        font-size: 64px;;
+    }
+   p{
+    width: 64%;
+    color:antiquewhite;
+    margin-left: 19%;
+    line-height: 1.8;
+    font-size: 18px;
+   }
+   .inffo{
+    margin-top: 20%;
+   }
+
+}
+
+.team-head{
+    h5{
+      color: #C6452C;
+    }
+    h3{
+      color: #0A2748;
+    }
+    p{
+      font-style: italic;
+    }
+}
+
+.our-team{
+    .card{
+        
+
+        margin-top: 20px;
+        border: none;
+        img{
+            border-radius: 100% ;
+            width: 45%;
+            transition: .6s;
+        }
+        h4{
+            font-size: 13px;
+              color: black;
+              font-weight: bold;
+        }
+        h5{
+            color: darkgray;
+        }
+        p{
+            font-style: italic;
+            line-height: 1.4;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+        }
+        .img{
+            overflow: hidden;
+           
+        }
+        img:hover{
+            transform: scale(1.2);
+        }
+      
+    }
+}
+
+.teamwork{
+    margin-top: 3%;
+    width: 100%;
+    margin-left: 34px;
+    .card{
+        width: 90%;
+        border: none;
+        overflow: hidden;
+        
+    }
+    .img{
+        transition: .6s;
+    }
+    .img:hover{
+             transform: scale(1.2);
+    }
+}
+
+.creater{
+    margin-top: 4%;
+
+    .card{
+        border: none;
+    }
+    h5{
+        color: #C6452C;
+      }
+      h3{
+        color: #0A2748;
+      }
+      p{
+        font-style: italic;
+        line-height: 1.6;
+        color: cadetblue;
+        font-size: 15px;
+      }
+}
+
+.team-testimonial{
+    margin-top: 40px;
+     background-color: #F6F8FA;
+    text-align: center;
+    .card{
+      margin-top: 60px;
+      background-color: #F6F8FA;
+        border: none;
+        p{
+          font-style: italic;
+          font-size: 17px;
+          font-weight: bold;
+          color: #0A2748;
+        }
+        h4{
+          font-size: 17px;
+          font-weight: bold;
+          color: #0A2748;
+        }
+        h5{
+            font-weight: bold;
+          color: #3a3d3f;
+        }
+      .img{
+        margin: auto;
+        width:8%;
+        img{
+          border-radius: 100%;
+        }
+      }
+    }
+  
+     
+    .slick-prev{
+   
+      outline: none !important;
+      width: 50px !important;
+      height: 50px !important ;
+      background: var(--color-lighter) !important;
+      color: var(--color-body) !important;
+      border: none !important;
+      border-radius: 6px !important;
+      z-index: 1 !important;
+      position: absolute !important;
+      right: unset !important;
+      left: 18px ;
+      top: 60%;
+      &::before{
+        content: "\f177" !important;
+        padding: 17px;
+        font: normal normal normal 14px/1 FontAwesome !important;
+        height: 100%;
+        width: 100%;
+        background-color:rgb(177, 180, 212);
+        color:black;
+        border-radius: 6px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        transition: transform .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+    }
+    
+    .slick-next{
+      outline: none !important;
+      width: 50px !important;
+      height: 50px !important ;
+      background: var(--color-lighter) !important;
+      color: var(--color-body) !important;
+      border: none !important;
+      border-radius: 6px !important;
+      z-index: 1 !important;
+      position: absolute !important;
+      left: unset !important;
+      right: 10px;
+      top: 60%;
+      &::before{
+        content: "\f178" !important;
+        padding: 17px;
+        font: normal normal normal 14px/1 FontAwesome !important;
+        height: 100%;
+        width: 100%;
+        background-color:rgb(177, 180, 212);
+        color:black;
+        border-radius: 6px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        z-index: -1;
+        transition: transform .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+    }
+    
+  }
+
+  @media (max-width:576px){
+    .team-head
+    {
+      margin-top: 30px !important;
+    }
+  }

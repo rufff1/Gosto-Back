@@ -1,0 +1,153 @@
+#basket{
+    .head{
+        
+        justify-content: space-between;
+        h1{
+            display: inline-block;
+            margin-top: 48px;
+        }
+        p{
+            display: inline-block;
+        }
+    }
+}
+.cart-update-btn-area{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.input-group{
+    align-items: center;
+    display: flex;
+    button{
+        border: 3px;
+        border-radius: 5px;
+        padding: 15px 30px;
+        margin-left: 15px;
+        background-color: #F6F7FB;
+    }
+    input{
+        border: none;
+        padding: 15px 70px;
+        outline: none;
+    }
+}
+.update-btn{
+    button{
+        border: 3px;
+        border-radius: 5px;
+        padding: 15px 60px;
+        background-color: #F6F7FB;
+        transition: .5s;
+    }
+    button:hover{
+        background-color: blue;
+        color: #F6F7FB;
+        padding: 20px 65px;
+    }
+}
+.bb{
+    margin-left: 30px;
+}
+.aa{
+   width: 1%;
+}
+#head{
+    .pop{
+        align-items: center;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        width: 100%;
+        justify-content: space-between;
+        background-color: #F6F7FB;
+        display: flex;
+    }
+}
+
+#calc{
+    display: flex;
+    .basket-box{
+        margin-left: 30px;
+        box-shadow: 0px 0px 6px 2px grey;
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-bottom: 3%;
+        h1{
+            width: 2%;
+        }
+    }
+}
+#basket{
+    .ado{
+        box-shadow: 0px 0px 6px 2px grey;
+        padding: 5px 30px;
+        align-items: center;
+        display: flex;
+        margin-top: 10px;
+        justify-content: space-between;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        img{
+            width: 10%;
+        }
+        input{
+            width: 4%;
+        }
+    }
+}
+
+
+@media (max-width:576px){
+    .pop{
+        h2{
+            font-size: 20px;
+        }
+        .aa{
+            padding-right: 60px;
+        }
+        .bb{
+            padding-right: 30px;
+        }
+    }
+    #basket-list{
+        h2{
+            font-style: 13px !important;
+        }
+    }
+    input{
+        width: 9% !important;
+    }
+ 
+ 
+}
+
+
+
+@media (min-width:578) and (max-width:768) {
+    .pop{
+        h2{
+            font-size: 20px;
+        }
+        .aa{
+            padding-right: 60px;
+        }
+        .bb{
+            padding-right: 30px;
+        }
+    }
+    #basket-list{
+        h2{
+            font-style: 13px !important;
+        }
+    }
+
+    input{
+        width: 9% !important;
+    }
+ 
+}
