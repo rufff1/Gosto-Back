@@ -164,3 +164,8 @@ C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\C
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\TagFindBlog.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogSearchPartialView.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductListPartial.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketCartPartial.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Footer\Default.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Basket\Index.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shop\ShopDetail.cshtml.g.cs

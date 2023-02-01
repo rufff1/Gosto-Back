@@ -25,5 +25,35 @@
     })
 
 
+    $(".addtobasket").click(function (e) {
+        e.preventDefault();
 
+        let url = $(this).attr("href");
+
+        fetch(url)
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+                $(".header-cart").html(data);
+            })
+    })
+
+
+    $(document).on("click", ".product-close", function (e) {
+        e.preventDefault();
+
+        let url = $(this).attr("href");
+
+
+        fetch(url)
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+
+                $(".header-cart").html(data);
+            })
+
+    })
 })

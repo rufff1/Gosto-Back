@@ -1,0 +1,309 @@
+﻿@model ShopVM
+@{
+    ViewData["Title"] = "ShopDetail";
+    int count = 1;
+  
+
+}
+
+
+
+<section>
+
+    <div class="detail">
+        <div class="containerr">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="path">
+                        <a class="d-inline" asp-controller="home" asp-action="index">Home</a>
+                        /
+                        <a class="d-inline product-name" href="">@Model.Product.Title</a>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-6">
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <div class="product-imgs">
+                                <div class="img-display">
+                                    <div class="img-showcase">
+                                        @foreach (ProductImage productImage in Model.Product.ProductImages)
+                                        {
+                                            <img  src="~/assets/img/Product/@productImage.Name" alt="shoe image">
+                                        }
+                                        </div>
+                                </div>
+                                <div class="img-select">
+                                    @foreach (var item in Model.Product.ProductImages)
+                                    {
+                 
+                                    <div class="img-item">
+                                        <a  data-id="@count">
+                                            <img src="~/assets/img/Product/@item.Name" alt="shoe image">
+                                        </a>
+                                    </div>
+                                        count++;
+                                    }
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-name">
+                        <h2>@Model.Product.Title</h2>
+                    </div>
+                    <div class="price">
+                        <div class="sale-price">
+                            @if (Model.Product.DiscountedPrice > 0)
+                            {
+                                <p>Discount: @(((Model.Product.Price) - (((Model.Product.Price / 100) * Model.Product.DiscountedPrice))).ToString("0.##")) / @Model.Product.DiscountedPrice.ToString("0.##")% </p>
+                            }
+                        </div>
+
+                        <div class="product-price">
+                            @if (Model.Product.DiscountedPrice > 0)
+                            {
+                                <span class="now-price"> €@((((Model.Product.Price / 100) * Model.Product.DiscountedPrice)).ToString("0.##")) </span>
+                                <span class="discount-price">€@Model.Product.Price.ToString("0.##")</span>
+                            }
+                            else
+                            {
+                                <span class="discount-price" style="font-size: 30px; color: #0A2748;">€@Model.Product.Price</span>
+
+                            }
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <p>
+                            @Model.Product.Description
+                        </p>
+                    </div>
+
+                    <div class="img-select align-items-center">
+                        <div class="row">
+
+                            @foreach (var item in Model.Product.ProductColors)
+                            {
+                                <div class="col-lg-1">
+                                    <div class="color-item">
+                                        <a >
+                                            <h5>@item.Color.Name</h5>
+                                            <div class="color" style="background-color: @item.Color.Name;"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                              
+                            }
+
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="add-cart d-flex">
+
+                        <div class="number">
+                            <span class="minus">-</span>
+                            <input type="text" value="1" />
+                            <span class="plus">+</span>
+                        </div>
+                        <button type="submit">ADD TO CART</button>
+                    </div>
+
+
+                    <div class="buy-product">
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="tick" onchange="document.getElementById('terms').disabled = !this.checked;" />
+                            </td>
+                            <span> I agree to the Terms & Conditions</span>
+
+                        </tr>
+                        <td class="label1"></td>
+                        <td align="right">
+                            <div class="buy-button ">
+                                <button type="submit" class="button submit py-4 fw-bold" disabled name="terms" id="terms">BUY IT NOW</button>
+                            </div>
+                        </td>
+                        
+
+                    </div>
+
+                    <div class="add-wish">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                        <a class="btnw_add">Add to wishlist</a>
+                    </div>
+
+                    <div class="main-info">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="vendor">Vendor: <span>@Model.Product.Vendor</span></p>
+                                <p class="availability:">
+                                    AVAILABILITY: @if (Model.Product.Count > 0)
+                                    {
+                                        <span>In Stock</span>
+                                    }
+                                    else
+                                    {
+                                      <span>Product Is Over</span>
+                                    }
+                                </p>
+                                <p class="sku">SKU: <span>@Model.Product.Sku</span></p>
+                                <p class="barcode">BARCODE: <span>@Model.Product.Barcode</span></p>
+                                <p class="tags">
+                                    TAGS:
+                                    @foreach (var item in Model.Product.ProductTags)
+                                    {
+                                    <span  style="text-decoration:none"> @item.PTag.Name ,</span>
+
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="pro-description">
+        <div class="containerr">
+            <div class="row">
+                <div class="text-center">
+                    <h3>Product Info</h3>
+                </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        @if (Model.Colors != null)
+                        {
+                            <tr class="color">
+                                <th class="content">Color</th>
+                                <td class="value">
+                                    @foreach (var item in Model.Product.ProductColors)
+                                    {
+                                        <span> @item.Color.Name ,</span>
+
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Product.Material != null)
+                        {
+                            <tr class="material">
+                                <th class="content">Material</th>
+                                <td class="value">@Model.Product.Material</td>
+                            </tr>
+                        }
+                        @if (Model.Product.Legs != null)
+                        {
+                            <tr class="legs">
+                                <th class="content">Legs</th>
+                                <td class="value">@Model.Product.Legs</td>
+                            </tr>
+                        }
+                        @if (Model.Product.Material != null)
+                        {
+                            <tr class="Dimensions and Weight">
+                                <th class="content">Weight</th>
+                                <td class="value">@Model.Product.Weight</td>
+                            </tr>
+                        }
+                        @if (Model.Product.Material != null)
+                        {
+                            <tr class="Length">
+                                <th class="content">Length</th>
+                                <td class="value">@Model.Product.Length</td>
+                            </tr>
+                        }
+                        @if (Model.Product.Material != null)
+                        {
+                            <tr class="Depth">
+                                <th class="content">Depth</th>
+                                <td class="value">@Model.Product.Depth</td>
+                            </tr>
+                        }
+                        @if (Model.Product.Material != null)
+                        {
+                            <tr class="Seat Height">
+                                <th class="content">Seat Height</th>
+                                <td class="value">@Model.Product.SeatHeight</td>
+                            </tr>
+                        }
+                        </tbody>
+                </table>
+
+                <div class="info-brand">
+                    <div class="brand-head">
+                        <h4>PRODUCT BRAND</h4>
+                    </div>
+                    <p>
+                      @Model.Product.Brand.BrandInfo
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="selling">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="all text-center">
+                    <h5 class="fw-bold">EXPLORE THE LOOKBOOK</h5>
+                    <h3 class="fw-bold">TOP TRENDING PRODUCTS</h3>
+                    <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="containerr">
+        <div class="trending-slider  overflow-hidden">
+
+
+
+            @await Html.PartialAsync("_ProductListPartial", Model.TrendingProduct)
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="selling">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="all text-center">
+                    <h3 class="fw-bold">TOP SELLING PRODUCTS</h3>
+                    <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="selling-product sellng overflow-hidden">
+        <div class="containerr">
+            <div class="row">
+                @await Html.PartialAsync("_ProductListPartial", Model.SellingProduct.Take(4))
+
+            </div>
+        </div>
+    </div>
+</section>
