@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Setting>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div style=" width: 86%; margin-left: 17%; margin-top: 5%; ">
+
+    <h2>Setting</h2>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Key)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Value)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Key)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+
+                    <td>
+                        <a class="btn btn-dark" asp-action="Update" asp-route-id="@item.Id">Update</a> |
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Gosto.Models.Slider>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div  style=" width: 86%; margin-left: 17%; margin-top: 5%;">
+
+    <h1>Slider</h1>
+
+    <p>
+        <a class="btn btn-dark" asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BackImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img width="100" src="~/assets/img/Slider/@item.BackImage" alt="Alternate Text" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsDeleted)
+                    </td>
+
+                    <td>
+                   
+                        <a class="btn btn-dark" asp-action="update" asp-route-id="@item.Id">Update</a> |
+                        <a class="btn btn-dark" asp-action="detail" asp-route-id="@item.Id">Details</a> |
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
