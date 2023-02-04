@@ -44,7 +44,7 @@ namespace Gosto.Areas.Manage.Controllers
             if (!ModelState.IsValid)
             {
 
-                return View();
+                return View(brand);
             }
 
             if (brand.Name == null)
