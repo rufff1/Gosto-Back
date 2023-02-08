@@ -11,7 +11,7 @@ namespace Gosto.Models
     public class OurTeamBackImage :BaseEntity
     {
         [StringLength(150)]
-        [Required]
+
         public string Image { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }

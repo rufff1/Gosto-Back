@@ -11,7 +11,7 @@ namespace Gosto.Models
     public class CreateTrend :BaseEntity
     {
         [StringLength(150)]
-        [Required]
+ 
         public string BackImage { get; set; }
         [StringLength(150)]
         [Required]

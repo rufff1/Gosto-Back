@@ -1,0 +1,185 @@
+﻿@model Gosto.Models.Product
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div style=" width: 86%; margin-left: 17%; margin-top: 5%;">
+
+    <h1>Detail</h1>
+
+    <div>
+
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DiscountedPrice)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DiscountedPrice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Count)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Count)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vendor)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vendor)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Sku)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sku)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Barcode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Barcode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Material)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Material)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Legs)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Legs)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Weight)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Weight)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Length)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Length)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SeatHeight)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SeatHeight)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Depth)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Depth)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MainImage)
+            </dt>
+            <dd class="col-sm-10">
+                <img width="100px;" src="~/assets/img/Product/@Model.MainImage" alt="Alternate Text" />
+
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HoverImage)
+            </dt>
+            <dd class="col-sm-10">
+                <img width="100px;" src="~/assets/img/Product/@Model.HoverImage" alt="Alternate Text" />
+
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IsSellingProduct)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IsSellingProduct)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IsTrendingProduct)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IsTrendingProduct)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ProductCategory)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ProductCategory.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Brand)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Brand.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatAt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CreatAt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatBy)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CreatBy)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.UpdateAt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UpdateAt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.UpdateBy)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UpdateBy)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeletedAt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeletedAt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeletedBy)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeletedBy)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="btn btn-dark" asp-action="update" asp-route-id="@Model.Id">Edit</a> |
+        <a class="btn btn-dark" asp-action="Index">Back to List</a>
+    </div>
+</div>

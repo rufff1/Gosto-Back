@@ -40,7 +40,7 @@ namespace Gosto.Controllers
                 .Include(b=> b.BlogTags)
                 .ThenInclude(bt=> bt.BTag)
                 .FirstOrDefaultAsync(b=> b.IsDeleted == false && b.Id == id),
-                BlogCategories = await _context.BlogCategories.Where(b=> b.IsDeleted == false).ToListAsync(),
+                BlogCategories = await _context.BlogCategories.Include(b=> b.Blogs).Where(b=> b.IsDeleted == false).ToListAsync(),
                 BTags = await _context.BTags.Where(b=> b.IsDeleted == false).ToListAsync(),
                 Blogs = await _context.Blogs.Where(b=> b.IsDeleted == false).Take(3).ToListAsync()
             };

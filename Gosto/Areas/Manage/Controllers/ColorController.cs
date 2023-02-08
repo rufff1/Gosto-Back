@@ -41,7 +41,7 @@ namespace Gosto.Areas.Manage.Controllers
 
 
 
-        
+
             if (await _context.Colors.AnyAsync(c => c.IsDeleted == false && c.Name.ToLower() == color.Name.ToLower().Trim()))
             {
                 ModelState.AddModelError("Name", $"This name {color.Name} already exists");
@@ -109,7 +109,7 @@ namespace Gosto.Areas.Manage.Controllers
                 return BadRequest("Id bos ola bilmez");
             }
 
-          
+
             bool isExist = _context.Colors.Any(c => c.Name.ToLower() == color.Name.ToLower().Trim() && c.HTax.ToLower() == color.HTax.ToLower().Trim());
             if (isExist && !((existedColor.Name.ToLower() == color.Name.ToLower().Trim()) && (existedColor.HTax.ToLower() == color.HTax.ToLower().Trim())))
             {
@@ -185,10 +185,7 @@ namespace Gosto.Areas.Manage.Controllers
 
 
 
-            if (color.ProductColors.Count() > 0)
-            {
-                return Json(new { status = 400 });
-            }
+          
 
             color.IsDeleted = true;
             color.DeletedAt = DateTime.UtcNow.AddHours(4);

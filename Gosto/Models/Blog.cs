@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,7 +11,7 @@ namespace Gosto.Models
     public class Blog :BaseEntity
     {
         [StringLength(150)]
-        [Required]
+ 
         public string Image { get; set; }
         [StringLength(150)]
         [Required]
@@ -35,6 +37,14 @@ namespace Gosto.Models
 
         public BlogCategory BlogCategory { get; set; }
         public int BlogCategoryId { get; set; }
+
+
+
+        [NotMapped]
+        [MaxLength(3)]
+        public IEnumerable<int> TagIds { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
 
     }
 }

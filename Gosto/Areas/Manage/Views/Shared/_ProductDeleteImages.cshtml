@@ -1,0 +1,12 @@
+﻿
+@model IEnumerable<ProductImage>
+@if (Model != null)
+{
+    @foreach (ProductImage productImage in Model.Where(pi => !pi.IsDeleted))
+    {
+        <div class="col-lg-2">
+            <img style="width:50%" src="~/assets/images/Product/@productImage.Name" alt="Alternate Text" />
+            <a class="btn btn-danger" id="deleteImage" asp-action="DeleteImage" asp-route-id="@productImage.Id">Delete Image</a>
+        </div>
+    }
+}

@@ -1,0 +1,83 @@
+﻿@model Blog
+
+@{
+    ViewData["Title"] = "Update";
+    IEnumerable<BlogCategory> categories = ViewBag.BlogCategories;
+    SelectList selectListCategory = new SelectList(categories, nameof(BlogCategory.Id), nameof(BlogCategory.Name));
+    IEnumerable<BTag> tags = ViewBag.BTags;
+    SelectList selectListTag = new SelectList(tags, nameof(BTag.Id), nameof(BTag.Name));
+}
+<div style=" width: 86%; margin-left: 17%; margin-top: 5%;">
+
+
+    <h1>Update</h1>
+
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label"></label>
+                    <input asp-for="ImageFile" class="form-control" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Author" class="control-label"></label>
+                    <input asp-for="Author" class="form-control" />
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BlogTime" class="control-label"></label>
+                    <input asp-for="BlogTime" class="form-control" />
+                    <span asp-validation-for="BlogTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description1" class="control-label"></label>
+                    <input asp-for="Description1" class="form-control" />
+                    <span asp-validation-for="Description1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description2" class="control-label"></label>
+                    <input asp-for="Description2" class="form-control" />
+                    <span asp-validation-for="Description2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DescQuota" class="control-label"></label>
+                    <input asp-for="DescQuota" class="form-control" />
+                    <span asp-validation-for="DescQuota" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description3" class="control-label"></label>
+                    <input asp-for="Description3" class="form-control" />
+                    <span asp-validation-for="Description3" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TagIds" class="control-label"></label>
+                    <select asp-for="TagIds" class="form-control" asp-items="selectListTag"></select>
+                    <span asp-validation-for="TagIds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BlogCategoryId" class="control-label"></label>
+                    <select asp-for="BlogCategoryId" class="form-control" asp-items="selectListCategory"></select>
+                    <span asp-validation-for="BlogCategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-dark" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-dark" asp-action="Index">Back to List</a>
+    </div>
+
+    </div>

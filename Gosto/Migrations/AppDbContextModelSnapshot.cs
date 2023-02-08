@@ -173,7 +173,6 @@ namespace Gosto.Migrations
                         .HasMaxLength(1000);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -304,7 +303,6 @@ namespace Gosto.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -378,7 +376,6 @@ namespace Gosto.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BackImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -425,7 +422,6 @@ namespace Gosto.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BackImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -494,7 +490,6 @@ namespace Gosto.Migrations
                         .HasMaxLength(90);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -530,7 +525,6 @@ namespace Gosto.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BackImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -589,7 +583,6 @@ namespace Gosto.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -659,6 +652,9 @@ namespace Gosto.Migrations
                     b.Property<int?>("BrandId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ColorId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
@@ -705,7 +701,6 @@ namespace Gosto.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MainImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
@@ -747,6 +742,8 @@ namespace Gosto.Migrations
 
                     b.HasIndex("BrandId");
 
+                    b.HasIndex("ColorId");
+
                     b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Products");
@@ -772,7 +769,6 @@ namespace Gosto.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
@@ -948,7 +944,6 @@ namespace Gosto.Migrations
                         .HasMaxLength(1000);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -1020,7 +1015,6 @@ namespace Gosto.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BackImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -1084,7 +1078,6 @@ namespace Gosto.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -1147,7 +1140,6 @@ namespace Gosto.Migrations
                         .HasMaxLength(1000);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -1378,6 +1370,10 @@ namespace Gosto.Migrations
                     b.HasOne("Gosto.Models.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId");
+
+                    b.HasOne("Gosto.Models.Color", null)
+                        .WithMany("Products")
+                        .HasForeignKey("ColorId");
 
                     b.HasOne("Gosto.Models.ProductCategory", "ProductCategory")
                         .WithMany("Products")

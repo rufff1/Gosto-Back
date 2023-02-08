@@ -1,0 +1,158 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Create";
+
+    List<ProductCategory> categories = ViewBag.Categories;
+    List<Brand> brands = ViewBag.Brands;
+    List<PTag> tags = ViewBag.Tags;
+    SelectList selectListItems = new SelectList(categories, nameof(ProductCategory.Id), nameof(ProductCategory.Name));
+    SelectList selectListBrand = new SelectList(brands, nameof(Brand.Id), nameof(Brand.Name));
+    SelectList selectListTag = new SelectList(tags, nameof(PTag.Id), nameof(PTag.Name));
+    List<Color> colors = ViewBag.Colors;
+    SelectList selectListColor = new SelectList(colors, nameof(Color.Id), nameof(Color.Name));
+}
+<div style=" width: 86%; margin-left: 17%; margin-top: 5%;">
+
+    <h1>Create</h1>
+
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form enctype="multipart/form-data" method="post" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DiscountedPrice" class="control-label"></label>
+                    <input asp-for="DiscountedPrice" class="form-control" />
+                    <span asp-validation-for="DiscountedPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Count" class="control-label"></label>
+                    <input asp-for="Count" class="form-control" />
+                    <span asp-validation-for="Count" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Vendor" class="control-label"></label>
+                    <input asp-for="Vendor" class="form-control" />
+                    <span asp-validation-for="Vendor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sku" class="control-label"></label>
+                    <input asp-for="Sku" class="form-control" />
+                    <span asp-validation-for="Sku" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Barcode" class="control-label"></label>
+                    <input asp-for="Barcode" class="form-control" />
+                    <span asp-validation-for="Barcode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Material" class="control-label"></label>
+                    <input asp-for="Material" class="form-control" />
+                    <span asp-validation-for="Material" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Legs" class="control-label"></label>
+                    <input asp-for="Legs" class="form-control" />
+                    <span asp-validation-for="Legs" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Weight" class="control-label"></label>
+                    <input asp-for="Weight" class="form-control" />
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Length" class="control-label"></label>
+                    <input asp-for="Length" class="form-control" />
+                    <span asp-validation-for="Length" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SeatHeight" class="control-label"></label>
+                    <input asp-for="SeatHeight" class="form-control" />
+                    <span asp-validation-for="SeatHeight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Depth" class="control-label"></label>
+                    <input asp-for="Depth" class="form-control" />
+                    <span asp-validation-for="Depth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MainImageFile" class="control-label"></label>
+                    <input asp-for="MainImageFile" class="form-control" />
+                    <span asp-validation-for="MainImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoverImageFile" class="control-label"></label>
+                    <input asp-for="HoverImageFile" class="form-control" />
+                    <span asp-validation-for="HoverImageFile" class="text-danger"></span>
+                </div>
+                <div id="ProductImagesFile" class="form-group">
+                    <label asp-for="ProductImagesFiles"></label>
+                    <input asp-for="ProductImagesFiles" class="form-control">
+                    <span asp-validation-for="ProductImagesFiles" class="text text-danger"></span>
+                </div>
+                <div class="form-check">
+                    <input asp-for="IsSellingProduct" class="form-check-input">
+                    <label asp-for="IsSellingProduct" class="form-check-label"></label>
+                    <span asp-validation-for="IsSellingProduct" class="text text-danger"></span>
+                </div>
+                <div class="form-check">
+                    <input asp-for="IsTrendingProduct" class="form-check-input">
+                    <label asp-for="IsTrendingProduct" class="form-check-label"></label>
+                    <span asp-validation-for="IsTrendingProduct" class="text text-danger"></span>
+                </div>
+                <div id="parentList" class="form-group">
+                    <label>Select Tags</label>
+                    <select class="form-control" asp-for="TagIds" asp-items="selectListTag">
+                        <option value="">Choose...</option>
+                    </select>
+                    <span asp-validation-for="TagIds" class="text-danger"></span>
+                </div>
+                <div id="parentList" class="form-group">
+                    <label>Select Colors</label>
+                    <select class="form-control" asp-for="ColorIds" asp-items="selectListColor">
+                        <option value="">Choose...</option>
+                    </select>
+                    <span asp-validation-for="TagIds" class="text-danger"></span>
+                </div>
+                <div id="parentList" class="form-group">
+                    <label>Category</label>
+                    <select asp-for="ProductCategoryId" class="form-control" asp-items="selectListItems">
+                    </select>
+                    <span asp-validation-for="ProductCategoryId" class="text-danger"></span>
+                </div>
+                <div id="parentList" class="form-group">
+                    <label>Brand</label>
+                    <select asp-for="BrandId" class="form-control" asp-items="selectListBrand">
+                    </select>
+                    <span asp-validation-for="BrandId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-dark" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-dark" asp-action="Index">Back to List</a>
+    </div>
+
+    </div>

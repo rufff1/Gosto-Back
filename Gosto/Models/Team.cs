@@ -11,7 +11,7 @@ namespace Gosto.Models
     public class Team :BaseEntity
     {
         [StringLength(150)]
-        [Required]
+ 
         public string Image { get; set; }
         [StringLength(50)]
         [Required]

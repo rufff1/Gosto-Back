@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div style=" width: 86%; margin-left: 17%; margin-top: 5%;">
+
+
+    <h1>Product</h1>
+
+    <p>
+        <a class="btn btn-dark" asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DiscountedPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Count)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.MainImage)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.IsSellingProduct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsTrendingProduct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductCategory)
+                </th>
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiscountedPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+
+                    <td>
+                        <img width="100px;" src="~/assets/img/Product/@item.MainImage" alt="Alternate Text" />
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsSellingProduct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsTrendingProduct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCategory.Name)
+                    </td>
+
+
+                    <td>
+                        <a class="btn btn-dark" asp-action="update" asp-route-id="@item.Id">Edit</a> |
+                        <a class="btn btn-dark" asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>

@@ -62,9 +62,9 @@ namespace Gosto.Areas.Manage.Controllers
                 ModelState.AddModelError("ImageFile", "Image olcusu 1mb cox olmamalidir");
                 return View();
             }
-            if (!slider.ImageFile.CheckFileType("image/jpeg , image/png"))
+            if (!slider.ImageFile.CheckFileType("image/jpeg"))
             {
-                ModelState.AddModelError("ImageFile", "image png ve ya jpeg tipinnen fayl secin! ");
+                ModelState.AddModelError("ImageFile", "image jpeg tipinnen fayl secin! ");
                 return View();
             }
 
@@ -145,15 +145,16 @@ namespace Gosto.Areas.Manage.Controllers
                 ModelState.AddModelError("ImageFile", "Image daxil edin");
                 return View();
             }
+       
 
             if (!slider.ImageFile.CheckFileSize(1000))
             {
                 ModelState.AddModelError("ImageFile", "Image olcusu 1mb cox olmamalidir");
                 return View();
             }
-            if (!slider.ImageFile.CheckFileType("image/jpeg,image/png"))
+            if (!slider.ImageFile.CheckFileType("image/jpeg"))
             {
-                ModelState.AddModelError("ImageFile", "image png ve ya jpeg tipinnen fayl secin! ");
+                ModelState.AddModelError("ImageFile", "image jpeg tipinnen fayl secin! ");
                 return View();
             }
 
@@ -161,9 +162,9 @@ namespace Gosto.Areas.Manage.Controllers
             existedSlider.BackImage = slider.ImageFile.CreateImage(_env, "assets", "img", "slider");
             existedSlider.Description = slider.Description;
             existedSlider.Title = slider.Title;
-            slider.UpdateAt = DateTime.UtcNow.AddHours(4);
-            slider.IsDeleted = false;
-            slider.UpdateBy = "System";
+            existedSlider.UpdateAt = DateTime.UtcNow.AddHours(4);
+            existedSlider.IsDeleted = false;
+            existedSlider.UpdateBy = "System";
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

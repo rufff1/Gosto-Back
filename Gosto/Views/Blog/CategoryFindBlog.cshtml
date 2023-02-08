@@ -21,7 +21,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <span class="blog-category"><a href="" tabindex="0">@blog.BlogCategory</a></span>
+                                <span class="blog-category"><a href="" tabindex="0">@blog.BlogCategory.Name</a></span>
                                 <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id"><h5 class="card-title">@blog.Title</h5></a>
                                 <p class="card-text">
                                     @if (blog.Description1.Length > 60)

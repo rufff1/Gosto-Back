@@ -81,7 +81,7 @@
                                 {
                                    
 
-                                        <li><a asp-controller="blog" asp-action="CategoryFindBlog" asp-route-id="@blogCategory.Id">@blogCategory.Name ()</a></li>
+                                        <li><a asp-controller="blog" asp-action="CategoryFindBlog" asp-route-id="@blogCategory.Id">@blogCategory.Name (@blogCategory.Blogs.Count())</a></li>
                                 
                                 }
 

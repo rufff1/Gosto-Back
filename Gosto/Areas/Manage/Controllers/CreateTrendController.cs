@@ -69,7 +69,7 @@ namespace Gosto.Areas.Manage.Controllers
 
             if (existedCreateTrend == null) return NotFound("id tapilmadi");
 
-            if (createTrend.ImageFile == null)
+            if (createTrend.ImageFile == null && existedCreateTrend.BackImage == null)
             {
                 ModelState.AddModelError("ImageFile", "Image daxil edin");
                 return View();
@@ -80,9 +80,9 @@ namespace Gosto.Areas.Manage.Controllers
                 ModelState.AddModelError("ImageFile", "Image olcusu 1mb cox olmamalidir");
                 return View();
             }
-            if (!createTrend.ImageFile.CheckFileType("image/jpeg,image/png"))
+            if (!createTrend.ImageFile.CheckFileType("image/jpeg"))
             {
-                ModelState.AddModelError("ImageFile", "image png ve ya jpeg tipinnen fayl secin! ");
+                ModelState.AddModelError("ImageFile", "image jpeg tipinnen fayl secin! ");
                 return View();
             }
 

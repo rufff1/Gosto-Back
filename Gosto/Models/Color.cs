@@ -16,6 +16,7 @@ namespace Gosto.Models
         public string HTax { get; set; }
 
         public IEnumerable<ProductColor> ProductColors { get; set; }
+        public IEnumerable<Product> Products { get; set; }
 
 
     }

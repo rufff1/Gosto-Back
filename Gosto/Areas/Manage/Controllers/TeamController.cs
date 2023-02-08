@@ -62,9 +62,9 @@ namespace Gosto.Areas.Manage.Controllers
                 ModelState.AddModelError("ImageFile", "Image olcusu 1mb cox olmamalidir");
                 return View();
             }
-            if (!team.ImageFile.CheckFileType("image/jpeg,image/png"))
+            if (!team.ImageFile.CheckFileType("image/jpeg"))
             {
-                ModelState.AddModelError("ImageFile", "image png ve ya jpeg tipinnen fayl secin! ");
+                ModelState.AddModelError("ImageFile", "image jpeg tipinnen fayl secin! ");
                 return View();
             }
 
@@ -159,9 +159,9 @@ namespace Gosto.Areas.Manage.Controllers
                 ModelState.AddModelError("ImageFile", "Image olcusu 1mb cox olmamalidir");
                 return View();
             }
-            if (!team.ImageFile.CheckFileType("image/jpeg,image/png"))
+            if (!team.ImageFile.CheckFileType("image/jpeg"))
             {
-                ModelState.AddModelError("ImageFile", "image png ve ya jpeg tipinnen fayl secin! ");
+                ModelState.AddModelError("ImageFile", "image jpeg tipinnen fayl secin! ");
                 return View();
             }
 

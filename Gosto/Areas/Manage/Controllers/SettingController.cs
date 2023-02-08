@@ -62,13 +62,13 @@ namespace Gosto.Areas.Manage.Controllers
                         ModelState.AddModelError("File", "sekil olcusu 2m cox olmamalidir");
                         return View();
                     }
-                    if (!setting.File.CheckFileType("image/jpeg,image/png"))
+                    if (!setting.File.CheckFileType("image/png"))
                     {
-                        ModelState.AddModelError("File", "image png ve ya jpeg tipinnen fayl secin ! ");
+                        ModelState.AddModelError("File", "image png tipinnen fayl secin ! ");
                         return View();
                     }
-                    Helper.DeleteFile(_env, setting.Value, "manage", "img");
-                    settingExists.Value = setting.File.CreateImage(_env, "manage", "img");
+                    Helper.DeleteFile(_env, setting.Value, "manage", "img" , "Logo");
+                    settingExists.Value = setting.File.CreateImage(_env, "manage", "img" , "Logo");
                 }
             }
 

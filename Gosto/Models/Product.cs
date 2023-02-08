@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,7 +41,7 @@ namespace Gosto.Models
 
 
         [StringLength(255)]
-        [Required]
+   
         public string MainImage { get; set; }
         [StringLength(255)]
         public string HoverImage { get; set; }
@@ -57,6 +59,19 @@ namespace Gosto.Models
         public IEnumerable<ProductColor> ProductColors { get; set; }
         public IEnumerable<ProductTag> ProductTags { get; set; }
         public IEnumerable<ProductImage> ProductImages { get; set; }
+
+
+        [NotMapped]
+        public IFormFile MainImageFile { get; set; }
+        [NotMapped]
+        public IFormFile HoverImageFile { get; set; }
+        [NotMapped]
+        public IEnumerable<IFormFile> ProductImagesFiles { get; set; }
+        [NotMapped]
+        [MaxLength(3)]
+        public IEnumerable<int> TagIds { get; set; }
+        [NotMapped]
+        public IEnumerable<int> ColorIds { get; set; }
 
     }
 }
