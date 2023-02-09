@@ -3,39 +3,38 @@
 @foreach (var product in Model)
 {
 
-    <div class="col-lg-3 col-6 col-sm-4">
-        <div class="card " id="@product.Id">
-            <div class="product-image">
-                <a asp-controller="Shop" asp-action="ShopDetail" asp-route-id="@product.Id">
-                    <img class="first-image" src="~/assets/img/Product/@product.MainImage" alt="product">
-                    <img class="second-image" src="~/assets/img/Product/@product.HoverImage" alt="product">
-                </a>
-                <ul class="product-meta">
-                    <li><a class="addtobasket"><i class="fa-solid fa-store"></i></a></li>
-                    <li><a asp-controller="Shop" asp-action="ShopDetail" asp-route-id="@product.Id"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                    <li><a class="btnw_add" ><i class="fa-regular fa-heart"></i></a></li>
+<div class="col-lg-3 col-6 col-sm-4">
+    <div class="card " id="@product.Id">
+        <div class="product-image">
+            <a asp-controller="Shop" asp-action="ShopDetail" asp-route-id="@product.Id">
+                <img class="first-image" src="~/assets/img/Product/@product.MainImage" alt="product">
+                <img class="second-image" src="~/assets/img/Product/@product.HoverImage" alt="product">
+            </a>
+            <ul class="product-meta">
+                <li><a class="addtobasket" ><i class="fa-solid fa-store"></i></a></li>
+                <li><a asp-controller="Shop" asp-action="ShopDetail" asp-route-id="@product.Id"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
 
-                </ul>
+            </ul>
+            @if (product.DiscountedPrice > 0)
+            {
+<span class="discount-product">-@product.DiscountedPrice.ToString("0.##")%</span>                }
+        </div>
+
+        <div class="product-content">
+            <h4 class="product-title"><a asp-controller="Shop" asp-action="ShopDetail" asp-route-id="@product.Id">@product.Title</a></h4>
+            <div class="product-price">
                 @if (product.DiscountedPrice > 0)
                 {
-                    <span class="discount-product">-@product.DiscountedPrice.ToString("0.##")%</span>
-                }
-                </div>
-
-            <div class="product-content">
-                <h4 class="product-title"><a asp-controller="Shop" asp-action="ShopDetail" asp-route-id="@product.Id">@product.Title</a></h4>
-                <div class="product-price">
-                    @if (product.DiscountedPrice > 0)
-                    {
-                    <span class="regular-price ">€@((((product.Price / 100) * product.DiscountedPrice)).ToString("0.##"))</span>
-                    <span style="text-decoration: line-through;" class="price-sale">€@product.Price.ToString("0.##")</span>
+<span class="regular-price ">€@((((product.Price / 100) * product.DiscountedPrice)).ToString("0.##"))</span>
+                    <span style="text-decoration: line-through;" class="price-sale">€@product.Price.ToString("0.##")</span> }
+                                    else
+                                    {
+                    <span class="regular-price">€@product.Price</span>
                     }
-                 else
-                    {
-                    <span  class="regular-price">€@product.Price</span>
-                    }
-                </div>
             </div>
         </div>
     </div>
+</div>
 }
+

@@ -40,22 +40,8 @@ using Gosto.ViewModels;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 6 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\_ViewImports.cshtml"
-using Gosto.ComponentViewModels.Header;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 7 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\_ViewImports.cshtml"
-using Gosto.ViewComponents;
-
-#line default
-#line hidden
-#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f204f9f761c338b70ec75fddbb6324570c4fdfee", @"/Views/Blog/BlogDetail.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2138b3aba4b0a0ac261de5053b7f8111c097da55", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e8d6a45a406e3afca49c09987acccb638aa39b67", @"/Views/_ViewImports.cshtml")]
     public class Views_Blog_BlogDetail : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<BlogVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("d-inline"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -110,7 +96,7 @@ using Gosto.ViewComponents;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n\r\n<section>\r\n    <div class=\"blog-detail \">\r\n        <div class=\"containerr\">\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-12\">\r\n                    <div class=\"path\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee9868", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee9510", async() => {
                 WriteLiteral("Home");
             }
             );
@@ -137,7 +123,7 @@ using Gosto.ViewComponents;
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"col-lg-8\">\r\n                    <div class=\"blog-details\">\r\n                        <div class=\"blog-details-img\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f204f9f761c338b70ec75fddbb6324570c4fdfee12067", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f204f9f761c338b70ec75fddbb6324570c4fdfee11709", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -222,7 +208,7 @@ AddHtmlAttributeValue("", 865, Model.Blog.Image, 865, 17, false);
                             <h3>LEAVE A REPLY</h3>
                             <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee16104", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee15746", async() => {
                 WriteLiteral(@"
                                 <div class=""row"">
                                     <div class=""col-md-12"">
@@ -270,7 +256,7 @@ AddHtmlAttributeValue("", 865, Model.Blog.Image, 865, 17, false);
                             <div class=""blog-search"">
                                 
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee19395", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee19037", async() => {
                 WriteLiteral("\r\n                                    <input style=\"outline:none\" class=\"text-start searchInput\" type=\"search\" placeholder=\"Search blog\" name=\"search\" />\r\n                                ");
             }
             );
@@ -308,7 +294,7 @@ AddHtmlAttributeValue("", 865, Model.Blog.Image, 865, 17, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                        <li>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee21893", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee21535", async() => {
 #nullable restore
 #line 84 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\Blog\BlogDetail.cshtml"
                                                                                                                               Write(blogCategory.Name);
@@ -375,8 +361,8 @@ AddHtmlAttributeValue("", 865, Model.Blog.Image, 865, 17, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                <div class=\"single-blog-banner\">\r\n                                    <div class=\"img\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee25870", async() => {
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f204f9f761c338b70ec75fddbb6324570c4fdfee26087", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee25512", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f204f9f761c338b70ec75fddbb6324570c4fdfee25729", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -456,9 +442,9 @@ AddHtmlAttributeValue("", 5239, blog.Image, 5239, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("                            <div class=\"single-post mb-30\">\r\n                                <div class=\"row\">\r\n                                    <div class=\"single-post-img\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee31151", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee30793", async() => {
                 WriteLiteral("\r\n                                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f204f9f761c338b70ec75fddbb6324570c4fdfee31451", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f204f9f761c338b70ec75fddbb6324570c4fdfee31093", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -513,7 +499,7 @@ AddHtmlAttributeValue("", 6026, blog.Image, 6026, 11, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                    </div>\r\n                                    <div class=\"single-post-content w-50\">\r\n                                        <h5>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee35437", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee35079", async() => {
 #nullable restore
 #line 115 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\Blog\BlogDetail.cshtml"
                                                                                                                 Write(blog.Title.Substring(0,26));
@@ -586,7 +572,7 @@ AddHtmlAttributeValue("", 6026, blog.Image, 6026, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee39549", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f204f9f761c338b70ec75fddbb6324570c4fdfee39191", async() => {
 #nullable restore
 #line 130 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\Blog\BlogDetail.cshtml"
                                                                                                      Write(bTag.Name);

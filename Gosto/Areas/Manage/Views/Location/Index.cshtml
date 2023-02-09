@@ -1,8 +1,7 @@
-﻿@model IEnumerable<Location>
+﻿@model PageNationList<Location>
+@{ ViewData["Title"] = "Index";
+                int counter = Model.PageIndex == 1 ? 0 : (Model.PageIndex - 1) * 3; }
 
-@{
-    ViewData["Title"] = "Index";
-}
 <div style=" width: 86%; margin-left: 17%; margin-top: 5%;">
 
     <h1>Location</h1>
@@ -14,19 +13,19 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Image)
+                    Image
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Title)
+                    Title
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Adress)
+                    Adress
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Phone)
+                    Phone
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
+                    Email
                 </th>
 
                 <th></th>
@@ -35,30 +34,49 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <img width="100" src="~/assets/img/About/@item.Image" alt="Alternate Text" />
+<tr>
+    <td>
+        <img width="100" src="~/assets/img/About/@item.Image" alt="Alternate Text" />
 
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Adress)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        <a class="btn btn-dark" asp-action="update" asp-route-id="@item.Id">Edit</a> |
-                        <a class="btn btn-dark" asp-action="Detail" asp-route-id="@item.Id">Details</a> |
-                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-            }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Adress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        <a class="btn btn-dark" asp-action="update" asp-route-id="@item.Id">Edit</a> |
+        <a class="btn btn-dark" asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>            }
         </tbody>
     </table>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    @if (Model.HasPrev)
+                    {
+        <li class="page-item"><a class="page-link" asp-area="manage" asp-controller="location" asp-action="index" asp-route-pageIndex="@(Model.PageIndex-1)">Previous</a></li>}
+                    @for (int i = Model.Start; i <= Model.End; i++)
+                    {
+        <li class="page-item @(Model.PageIndex == i ? "active" :"")"><a class="page-link" asp-area="manage" asp-controller="location" asp-action="index" asp-route-pageIndex="@i">@i</a></li>}
+
+                    @if (Model.HasNext)
+                    {
+        <li class="page-item"><a class="page-link" asp-area="manage" asp-controller="location" asp-action="index" asp-route-pageIndex="@(Model.PageIndex+1)">Next</a></li>}
+                </ul>
+            </nav>
+        </div>
     </div>
+</div>

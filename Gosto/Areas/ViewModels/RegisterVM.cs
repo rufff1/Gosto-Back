@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace Gosto.Areas.ViewModels
         [Compare(nameof(Paswoord))]
         [DataType(DataType.Password)]
         public string ConfirmPaswoord { get; set; }
+        public IFormFile UserImageFile { get; set; }
     }
 }

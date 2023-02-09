@@ -2,6 +2,7 @@
 using Gosto.Extensions;
 using Gosto.Helpers;
 using Gosto.Models;
+using Gosto.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,13 +24,13 @@ namespace Gosto.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex)
         {
 
 
-            IEnumerable<Texnology> texnologies = await _context.Texnologies.Where(s => s.IsDeleted == false).ToListAsync();
+            IQueryable<Texnology> texnologies = _context.Texnologies.Where(s => s.IsDeleted == false);
 
-            return View(texnologies);
+            return View(PageNationList<Texnology>.Create(texnologies, pageIndex, 3));
 
         }
 

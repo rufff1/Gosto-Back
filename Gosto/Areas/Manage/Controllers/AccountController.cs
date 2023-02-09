@@ -1,6 +1,9 @@
 ﻿using Gosto.Areas.ViewModels;
+using Gosto.DAL;
+using Gosto.Extensions;
 using Gosto.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,11 +20,16 @@ namespace Gosto.Areas.Manage.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        private IWebHostEnvironment _env;
+        private readonly AppDbContext _context;
+
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env, AppDbContext context)
         {
             _roleManager = roleManager;
             _signInManager = signInManager;
             _userManager = userManager;
+            _env = env;
+            _context = context;
         }
         public IActionResult Index()
         {
@@ -49,8 +57,30 @@ namespace Gosto.Areas.Manage.Controllers
             {
                 Name = registerVM.Name,
                 UserName = registerVM.UserName,
-                Email = registerVM.Email
+                Email = registerVM.Email,
+               
             };
+
+         
+
+
+            if (registerVM.UserImageFile == null)
+            {
+                ModelState.AddModelError("UserImageFile", "Mağaza şəklini yükləməyiniz tələb olunur");
+                return View();
+            }
+            if (!registerVM.UserImageFile.CheckFileType("image/jpeg"))
+            {
+                ModelState.AddModelError("UserImageFile", "Seçilmiş faylın tipi jpeg olmalıdır");
+                return View();
+            }
+            if (!registerVM.UserImageFile.CheckFileSize(100))
+            {
+                ModelState.AddModelError("UserImageFile", "Secilmiş şəklin həcmi 100KB-dan artıq ola bilməz");
+                return View();
+            }
+            appUser.UserImageFile = registerVM.UserImageFile;
+            appUser.UserImage = appUser.UserImageFile.CreateImage(_env, "manage", "img" , "user");
 
 
             IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerVM.Paswoord);
@@ -62,6 +92,10 @@ namespace Gosto.Areas.Manage.Controllers
                 }
                 return View(registerVM);
             }
+
+
+
+
             await _userManager.AddToRoleAsync(appUser, "Admin");
             return RedirectToAction("login");
 
@@ -114,6 +148,7 @@ namespace Gosto.Areas.Manage.Controllers
                 Name = appUser.Name,
                 UserName = appUser.UserName,
                 Email = appUser.Email,
+               
             };
 
 

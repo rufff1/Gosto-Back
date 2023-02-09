@@ -1,5 +1,6 @@
 ﻿using Gosto.DAL;
 using Gosto.Models;
+using Gosto.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,11 +19,11 @@ namespace Gosto.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult>  Index()
+        public async Task<IActionResult>  Index(int pageIndex)
         {
-            IEnumerable<BTag> bTags = await _context.BTags.Where(c => c.IsDeleted == false).ToListAsync();
+            IQueryable<BTag> bTags = _context.BTags.Where(c => c.IsDeleted == false);
 
-            return View(bTags);
+            return View(PageNationList<BTag>.Create(bTags, pageIndex, 3));
         }
 
         [HttpGet]

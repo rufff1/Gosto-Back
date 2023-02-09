@@ -2,6 +2,7 @@
 using Gosto.Extensions;
 using Gosto.Helpers;
 using Gosto.Models;
+using Gosto.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,19 +24,15 @@ namespace Gosto.Areas.Manage.Controllers
             _env = env;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex)
         {
 
-     
-
-         
-
-            IEnumerable<Blog> blogs = await _context.Blogs
+            IQueryable<Blog> blogs =  _context.Blogs
                 .Include(b => b.BlogCategory)
                 .Include(b => b.BlogTags).ThenInclude(bt => bt.BTag)
-                .Where(b => b.IsDeleted == false).ToListAsync();
+                .Where(b => b.IsDeleted == false);
 
-            return View(blogs);
+            return View(PageNationList<Blog>.Create(blogs, pageIndex, 3));
         }
 
         [HttpGet]
@@ -176,7 +173,9 @@ namespace Gosto.Areas.Manage.Controllers
             if (blog == null) return NotFound("Blog tapilmadi");
 
 
-            blog.TagIds = await _context.BlogTags.Where(bt => bt.BlogId == id).Select(x => x.BlogId).ToListAsync();
+            blog.TagIds = await _context.BlogTags.Where(bt => bt.BlogId == id).Select(x => x.BTagId).ToListAsync();
+       
+
 
 
 

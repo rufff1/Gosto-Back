@@ -18,11 +18,11 @@ namespace Gosto.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex)
         {
-            IEnumerable<Blog> blogs = await _context.Blogs.Where(b => b.IsDeleted == false).Take(6).ToListAsync();
+            IQueryable<Blog> blogs = _context.Blogs.Where(b => b.IsDeleted == false);
 
-            return View(blogs);
+            return View(PageNationList<Blog>.Create(blogs, pageIndex, 6));
         }
 
         public async Task<IActionResult> BlogDetail (int? id)

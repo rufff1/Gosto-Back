@@ -1,4 +1,5 @@
 ﻿using Gosto.DAL;
+using Gosto.Models;
 using Gosto.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,15 +20,17 @@ namespace Gosto.Controllers
         }
         public async Task<IActionResult> Index()
         {
+
             ShopVM shopVM = new ShopVM
             {
-               
+
                 ProductCategories = await _context.ProductCategories
-                .Include(pt=> pt.Products).Where(c => c.IsDeleted == false).ToListAsync(),
+              .Include(pt => pt.Products).Where(c => c.IsDeleted == false).ToListAsync(),
+
                 Products = await _context.Products
-                .Include(p=> p.ProductColors)
-                .ThenInclude(p=> p.Color)
-                .Where(p => p.IsDeleted == false && p.IsSellingProduct).ToListAsync(),
+              .Include(p => p.ProductColors)
+              .ThenInclude(p => p.Color)
+              .Where(p => p.IsDeleted == false && p.IsSellingProduct).ToListAsync(),
                 Brands = await _context.Brands.Where(n => n.IsDeleted == false).ToListAsync(),
                 Colors = await _context.Colors.Where(n => n.IsDeleted == false).ToListAsync(),
 

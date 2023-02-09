@@ -1,4 +1,6 @@
-﻿$(document).ready(() => {
+﻿const { Title } = require("../../manage/vendor/chart.js");
+
+$(document).ready(() => {
 
     $(".searchInput").keyup(function () {
         let inputVal = $(this).val();
@@ -35,8 +37,10 @@
                 return res.text();
             })
             .then(data => {
+
                 $(".header-cart").html(data);
             })
+  
     })
 
 

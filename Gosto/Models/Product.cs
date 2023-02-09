@@ -47,8 +47,9 @@ namespace Gosto.Models
         public string HoverImage { get; set; }
         public bool IsSellingProduct { get; set; }
         public bool IsTrendingProduct { get; set; }
-
+     
         public ProductCategory ProductCategory { get; set; }
+      
         public int ProductCategoryId { get; set; }
 
         public Nullable<int> BrandId { get; set; }

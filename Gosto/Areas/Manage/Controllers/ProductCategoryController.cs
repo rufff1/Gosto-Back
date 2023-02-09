@@ -2,6 +2,7 @@
 using Gosto.Extensions;
 using Gosto.Helpers;
 using Gosto.Models;
+using Gosto.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +24,10 @@ namespace Gosto.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex)
         {
-            IEnumerable<ProductCategory> productCategories = await _context.ProductCategories.Where(b => b.IsDeleted == false).ToListAsync();
-            return View(productCategories);
+            IQueryable<ProductCategory> productCategories = _context.ProductCategories.Where(b => b.IsDeleted == false);
+            return View(PageNationList<ProductCategory>.Create(productCategories, pageIndex, 3));
         }
 
 
