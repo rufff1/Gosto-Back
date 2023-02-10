@@ -1,4 +1,4 @@
-﻿const { Title } = require("../../manage/vendor/chart.js");
+﻿
 
 $(document).ready(() => {
 
@@ -57,6 +57,41 @@ $(document).ready(() => {
             .then(data => {
 
                 $(".header-cart").html(data);
+            })
+
+    })
+
+
+    $(".addtobasket").click(function (e) {
+        e.preventDefault();
+
+        let url = $(this).attr("href");
+
+        fetch(url)
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+
+                $(".mobile-cart").html(data);
+            })
+
+    })
+
+
+    $(document).on("click", ".product-close", function (e) {
+        e.preventDefault();
+
+        let url = $(this).attr("href");
+
+
+        fetch(url)
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+
+                $(".mobile-cart").html(data);
             })
 
     })

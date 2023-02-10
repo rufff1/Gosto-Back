@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BasketVM>
+
+
+
+<div class="basket me-4 cart-btn">
+    <div class="icon">
+        <a  class="fs-3  px-3"><i class="fs-3 fa-solid fa-store"></i></a>
+        <span class="count">@Model.Count()</span>
+    </div>
+</div>
+
+<div class="mini-cart mobile-basket">
+    <ul class="cart-items">
+        @foreach (BasketVM basketVM in Model)
+        {
+            <li>
+                <div class="single-cart-item d-flex">
+                    <div class="cart-item-thumb">
+                        <a asp-controller="shop" asp-action="ShopDetail" asp-route-id="@basketVM.Id"><img src="~/assets/img/Product/@basketVM.Image" alt="product"></a>
+                        <span class="product-quantity">@(basketVM.Count)x</span>
+                    </div>
+                    <div class="cart-item-content media-body">
+                        <h5 class="product-name"><a asp-controller="shop" asp-action="ShopDetail" asp-route-id="@basketVM.Id">@basketVM.Title</a></h5>
+                        <span class="product-price">€@basketVM.Price</span>
+                        <a asp-controller="basket" asp-action="DeleteFromBasket" asp-route-id="@basketVM.Id" class="product-close"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
+            </li>
+        }
+
+    </ul>
+    <div class="price_content">
+        <div class="cart-subtotals">
+        
+
+            <div class="cart-total price_inline">
+                <span class="label">Total</span>
+                <span class="value">€@((Model.Sum(b => b.Price * b.Count)).ToString("0.##"))</span>
+            </div>
+        </div> <!-- price content -->
+      
+    </div>
+
+</div><!-- mini cart -->

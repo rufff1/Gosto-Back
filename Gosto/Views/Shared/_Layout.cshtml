@@ -2,10 +2,8 @@
 
 @{
     Dictionary<string, string> settings = await layoutService.GetSettingsAsync();
-   
 
-
-
+    IEnumerable<BasketVM> basketVMs = await layoutService.GetBasketVMsAsync();
  }
 
 
@@ -128,7 +126,7 @@
                                 <div class="barside-basket text-end ">
                                     <div class="icon d-flex justify-content-end align-items-center">
                                         <a class=" pe-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="icon-basket fa-solid fa-store"></i></a>
-                                        <span id="count-basket"></span>
+                                      
                                     </div>
 
                                     <div class="offcanvas offcanvas-end side-bar-right" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -143,15 +141,12 @@
                                             </div>
                                             <div class="scroll">
                                                 <div class="container">
-                                                    <div class="" id="calc">
-
+                                                    <div class="mobile-cart">
+                                                        @await Html.PartialAsync("_BasketCardPartial", basketVMs)
                                                     </div>
 
                                                 </div>
-                                                <div id="basket-list">
-
-
-                                                </div>
+                                             
 
                                             </div>
                                         </div>
@@ -231,17 +226,9 @@
                                         </div>
 
                                     </div>
-                                    <div class="basket me-4">
-                                        <div class="icon">
-                                            <a asp-controller="basket" asp-action="GetFromBasket" class="fs-3  px-3"><i class="fs-3 fa-solid fa-store"></i></a>
-                                            <span class="count"></span>
-                                        </div>
+                                    <div class="header-cart">
+                                        @await Html.PartialAsync("_BasketCardPartial", basketVMs)
                                     </div>
-
-
-
-
-
                                 </div>
 
                             </div>
@@ -363,3 +350,309 @@
 
 </body>
 </html> 
+
+
+
+
+<style>
+  
+    .mobile-cart .basket{
+        opacity:0;
+        visibility:hidden;
+    }
+
+
+    .mobile-cart .mini-cart {
+      
+        width: 345px;
+        background-color: #fff;
+        -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+        z-index: 99;
+        -webkit-transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+      
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-thumb {
+        width: 85px;
+        position: relative;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-thumb img {
+        width: 100%;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-thumb .product-quantity {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        min-width: 20px;
+        line-height: 20px;
+        border-radius: 100%;
+        padding: 0;
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+        background-color: #e52e06;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-content {
+        position: relative;
+        padding-left: 15px;
+        padding-right: 30px;
+        text-align: left !important;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-name a {
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 400;
+        color: #333;
+        -webkit-transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        text-align: left;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-name a:hover {
+        color: #e52e06;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-price {
+        margin: 5px 0 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: #e52e06;
+        display: block;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-color {
+        display: block;
+        font-size: 14px;
+        line-height: 20px;
+        color: #666;
+        margin: 5px 0 0;
+    }
+
+    .mobile-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-close {
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .mobile-cart .mini-cart .price_content {
+        padding: 20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .mobile-cart .mini-cart .price_content .price_inline {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: space-between;
+        border: 0;
+        padding: 0;
+    }
+
+    .mobile-cart .mini-cart .price_content .price_inline .label {
+        font-size: 16px;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .mobile-cart .mini-cart .price_content .price_inline .value {
+        font-weight: 600;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .mobile-cart .mini-cart .price_content .cart-total.price_inline .value {
+        color: #e52e06;
+    }
+
+    .mobile-cart .mini-cart .checkout {
+        padding: 20px;
+    }
+
+            .mobile-cart .mini-cart .checkout .main-btn {
+                background-color: #fff;
+                color: #333;
+                border: 1px solid #e5e5e5;
+                border-radius: 50px;
+            }
+
+
+
+
+
+
+
+
+    .header-cart {
+        position: relative;
+    }
+    .count {
+        background-color: #C6452C;
+        padding: 2px 7px;
+        border-radius: 100%;
+        color: white;
+    }
+    li{
+        list-style-type:none;
+    }
+        .header-cart .mini-cart {
+            position: absolute;
+            top: 125%;
+            right: 0;
+            width: 345px;
+            background-color: #fff;
+            -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            -webkit-transition: all 0.3s linear;
+            -moz-transition: all 0.3s linear;
+            -ms-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+            .header-cart .mini-cart .cart-items .single-cart-item .cart-item-thumb {
+                width: 85px;
+                position: relative;
+            }
+
+                .header-cart .mini-cart .cart-items .single-cart-item .cart-item-thumb img {
+                    width: 100%;
+                }
+
+                .header-cart .mini-cart .cart-items .single-cart-item .cart-item-thumb .product-quantity {
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                    min-width: 20px;
+                    line-height: 20px;
+                    border-radius: 100%;
+                    padding: 0;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 12px;
+                    background-color: #e52e06;
+                }
+
+            .header-cart .mini-cart .cart-items .single-cart-item .cart-item-content {
+                position: relative;
+                padding-left: 15px;
+                padding-right: 30px;
+                text-align: left !important;
+            }
+
+                .header-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-name a {
+                    text-transform: capitalize;
+                    font-size: 14px;
+                    line-height: 20px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-weight: 400;
+                    color: #333;
+                    -webkit-transition: all 0.3s linear;
+                    -moz-transition: all 0.3s linear;
+                    -ms-transition: all 0.3s linear;
+                    -o-transition: all 0.3s linear;
+                    transition: all 0.3s linear;
+                    text-align: left;
+                }
+
+                    .header-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-name a:hover {
+                        color: #e52e06;
+                    }
+
+                .header-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-price {
+                    margin: 5px 0 0;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #e52e06;
+                    display: block;
+                }
+
+                .header-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-color {
+                    display: block;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #666;
+                    margin: 5px 0 0;
+                }
+
+                .header-cart .mini-cart .cart-items .single-cart-item .cart-item-content .product-close {
+                    position: absolute;
+                    top: 0px;
+                    right: 5px;
+                    font-size: 18px;
+                    color: #333;
+                }
+
+            .header-cart .mini-cart .price_content {
+                padding: 20px;
+                border-bottom: 1px solid #e5e5e5;
+            }
+
+                .header-cart .mini-cart .price_content .price_inline {
+                    display: -webkit-flex;
+                    display: -moz-flex;
+                    display: -ms-flex;
+                    display: -o-flex;
+                    display: flex;
+                    justify-content: space-between;
+                    border: 0;
+                    padding: 0;
+                }
+
+                    .header-cart .mini-cart .price_content .price_inline .label {
+                        font-size: 16px;
+                        color: #333;
+                        font-weight: 500;
+                    }
+
+                    .header-cart .mini-cart .price_content .price_inline .value {
+                        font-weight: 600;
+                        color: #333;
+                        font-size: 16px;
+                    }
+
+                .header-cart .mini-cart .price_content .cart-total.price_inline .value {
+                    color: #e52e06;
+                }
+
+            .header-cart .mini-cart .checkout {
+                padding: 20px;
+            }
+
+                .header-cart .mini-cart .checkout .main-btn {
+                    background-color: #fff;
+                    color: #333;
+                    border: 1px solid #e5e5e5;
+                    border-radius: 50px;
+                }
+
+        .header-cart:hover .mini-cart {
+            opacity: 1 !important;
+            visibility: visible;
+        }
+
+</style>

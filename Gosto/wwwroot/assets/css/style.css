@@ -1757,7 +1757,7 @@ header {
 }
 header #count-wishlist {
   background-color: #C6452C;
-  padding: 3px 7px;
+  padding: 2px 7px;
   border-radius: 100%;
   color: white;
 }
@@ -2916,4 +2916,6 @@ header a:hover {
 }
 .back-to-top i {
   color: white;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

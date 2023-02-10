@@ -239,3 +239,4 @@ C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Areas\Manage
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Register.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Profile.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\ProfileEdit.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketCardPartial.cshtml.g.cs

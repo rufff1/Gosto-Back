@@ -11,7 +11,8 @@
                 <img class="second-image" src="~/assets/img/Product/@product.HoverImage" alt="product">
             </a>
             <ul class="product-meta">
-                <li><a class="addtobasket" ><i class="fa-solid fa-store"></i></a></li>
+                <li><a class="addtobasket" asp-controller="basket" asp-action="addtobasket" 
+                               asp-route-id="@product.Id"><i class="fa-solid fa-store"></i></a></li>
                 <li><a asp-controller="Shop" asp-action="ShopDetail" asp-route-id="@product.Id"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                 <li><a class="btnw_add"><i class="fa-regular fa-heart"></i></a></li>
 
