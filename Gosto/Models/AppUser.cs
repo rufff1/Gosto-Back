@@ -12,6 +12,14 @@ namespace Gosto.Models
     public class AppUser :IdentityUser
     {
         public string Name { get; set; }
+        [Required]
+        public string Job { get; set; }
+        [Required]
+        public string Country { get; set; }
+        [Required]
+        public string Adress { get; set; }
+        [Required]
+        public string Phone { get; set; }
 
         [StringLength(1000)]
         public string UserImage { get; set; }

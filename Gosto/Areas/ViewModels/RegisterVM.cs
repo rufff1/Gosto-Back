@@ -18,6 +18,14 @@ namespace Gosto.Areas.ViewModels
         [Compare(nameof(Paswoord))]
         [DataType(DataType.Password)]
         public string ConfirmPaswoord { get; set; }
+        [Required]
+        public string Job { get; set; }
+        [Required]
+        public string Country { get; set; }
+        [Required]
+        public string Adress { get; set; }
+        [Required]
+        public string Phone { get; set; }
         public IFormFile UserImageFile { get; set; }
     }
 }

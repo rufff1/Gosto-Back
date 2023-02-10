@@ -1,6 +1,7 @@
 ﻿using Gosto.Areas.ViewModels;
 using Gosto.DAL;
 using Gosto.Extensions;
+using Gosto.Helpers;
 using Gosto.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -58,7 +59,10 @@ namespace Gosto.Areas.Manage.Controllers
                 Name = registerVM.Name,
                 UserName = registerVM.UserName,
                 Email = registerVM.Email,
-               
+                Job = registerVM.Job,
+                Country = registerVM.Country,
+                Adress = registerVM.Adress,
+                Phone=registerVM.Phone
             };
 
          
@@ -148,17 +152,49 @@ namespace Gosto.Areas.Manage.Controllers
                 Name = appUser.Name,
                 UserName = appUser.UserName,
                 Email = appUser.Email,
-               
-            };
+           Job = appUser.Job,
+           Adress = appUser.Adress,
+            Country = appUser.Country,
+            Phone = appUser.Phone,
+            UserImage=appUser.UserImage,
+
+
+        };
 
 
             return View(profileVM);
         }
 
+
+
+
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ProfileEdit()
+        {
+            AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            ProfileVM profileVM = new ProfileVM
+            {
+                Name = appUser.Name,
+                UserName = appUser.UserName,
+                Email = appUser.Email,
+                Job = appUser.Job,
+                Adress = appUser.Adress,
+                Country = appUser.Country,
+                Phone = appUser.Phone,
+                UserImage = appUser.UserImage,
+
+
+            };
+
+
+            return View(profileVM);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Profile(ProfileVM profileVM)
+        public async Task<IActionResult> ProfileEdit(ProfileVM profileVM)
         {
             if (!ModelState.IsValid)
             {
@@ -185,8 +221,45 @@ namespace Gosto.Areas.Manage.Controllers
                 appUser.Email = profileVM.Email.Trim();
 
             }
+            if (appUser.Phone != profileVM.Phone.Trim().ToLowerInvariant())
+            {
+                check = true;
+                appUser.Email = profileVM.Email.Trim();
+
+            }
+            profileVM.UserImage = appUser.UserImage;
+
+            if (profileVM.UserImageFile == null)
+            {
+                ModelState.AddModelError("UserImageFile", " şəkil yükləməyiniz tələb olunur");
+                return View();
+            }
+            if (!profileVM.UserImageFile.CheckFileType("image/jpeg"))
+            {
+                ModelState.AddModelError("UserImageFile", "Seçilmiş faylın tipi jpeg olmalıdır");
+                return View();
+            }
+            if (!profileVM.UserImageFile.CheckFileSize(100))
+            {
+                ModelState.AddModelError("UserImageFile", "Secilmiş şəklin həcmi 100KB-dan artıq ola bilməz");
+                return View();
+            }
+            if (appUser.UserImage != null)
+            {
+                Helper.DeleteFile(_env, appUser.UserImage, "manage", "img" , "user");
+            }
+            appUser.UserImage = profileVM.UserImageFile.CreateImage(_env, "manage", "img", "user");
+
+              
+
             if (check)
             {
+                appUser.UserName = profileVM.UserName;
+                appUser.Job = profileVM.Job;
+                appUser.Adress = profileVM.Adress;
+                appUser.Country = profileVM.Country;
+                appUser.Phone = profileVM.Phone;
+
                 IdentityResult identityResult = await _userManager.UpdateAsync(appUser);
                 if (!identityResult.Succeeded)
                 {
@@ -211,8 +284,10 @@ namespace Gosto.Areas.Manage.Controllers
                     return View(profileVM);
 
                 }
+
                 string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
                 IdentityResult identityResult = await _userManager.ResetPasswordAsync(appUser, token, profileVM.NewPaswoord);
+
                 if (!identityResult.Succeeded)
                 {
                     foreach (var item in identityResult.Errors)
@@ -224,6 +299,9 @@ namespace Gosto.Areas.Manage.Controllers
                 }
             }
 
+        
+          
+           
 
             return RedirectToAction("Index", "Dashboard", new { area = "manage" });
         }

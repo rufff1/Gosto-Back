@@ -88,6 +88,30 @@
                                             <span asp-validation-for="Email" class="text text-danger"></span>
 
                                         </div>
+                                        <div class="col-12">
+                                            <label asp-for="Job" class="form-label">Your JOB</label>
+                                            <input asp-for="Job" class="form-control" required>
+                                            <span asp-validation-for="Job" class="text text-danger"></span>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <label asp-for="Country" class="form-label">Your Country</label>
+                                            <input asp-for="Country" class="form-control" required>
+                                            <span asp-validation-for="Country" class="text text-danger"></span>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <label asp-for="Adress" class="form-label">Your Adress</label>
+                                            <input asp-for="Adress" class="form-control" required>
+                                            <span asp-validation-for="Adress" class="text text-danger"></span>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <label asp-for="Phone" class="form-label">Your Phone</label>
+                                            <input asp-for="Phone" class="form-control" required>
+                                            <span asp-validation-for="Phone" class="text text-danger"></span>
+
+                                        </div>
 
                                         <div class="col-12">
                                             <label asp-for="UserName" for="yourUsername" class="form-label">Username</label>
@@ -104,32 +128,32 @@
                                                 <input asp-for="UserImageFile" class="form-control" />
                                                 <span asp-validation-for="UserImageFile" class="text-danger"></span>
                                             </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <label asp-for="Paswoord" class="form-label">Password</label>
-                                                <input asp-for="Paswoord" class="form-control" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label asp-for="Paswoord" class="form-label">Password</label>
+                                            <input asp-for="Paswoord" class="form-control" required>
 
-                                            </div>
-                                            <div class="col-12">
-                                                <label asp-for="ConfirmPaswoord" class="form-label">Confirm Paswoord</label>
-                                                <input asp-for="ConfirmPaswoord" class="form-control" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label asp-for="ConfirmPaswoord" class="form-label">Confirm Paswoord</label>
+                                            <input asp-for="ConfirmPaswoord" class="form-control" required>
 
-                                            </div>
+                                        </div>
 
-                                            <div class="col-12">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" required>
-                                                    <label class="form-check-label">I agree and accept the </label> <a>terms and conditions</a>
-                                                </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" required>
+                                                <label class="form-check-label">I agree and accept the </label> <a>terms and conditions</a>
                                             </div>
+                                        </div>
 
 
-                                            <div class="col-12">
-                                                <button class="btn btn-primary w-100" type="submit">Create Account</button>
-                                            </div>
-                                            <div class="col-12">
-                                                <p class="small mb-0">Already have an account? <a asp-area="manage" asp-controller="account" asp-action="login">Log in</a></p>
-                                            </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="small mb-0">Already have an account? <a asp-area="manage" asp-controller="account" asp-action="login">Log in</a></p>
+                                        </div>
                                     </form>
 
                                 </div>
