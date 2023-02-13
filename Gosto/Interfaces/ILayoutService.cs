@@ -10,6 +10,7 @@ namespace Gosto.Interfaces
     {
         Task<Dictionary<string, string>> GetSettingsAsync();
         Task<IEnumerable<BasketVM>> GetBasketVMsAsync();
+     
 
 
 

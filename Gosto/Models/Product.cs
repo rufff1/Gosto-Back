@@ -39,7 +39,7 @@ namespace Gosto.Models
         public string SeatHeight { get; set; }
         public string Depth { get; set; }
 
-
+  
         [StringLength(255)]
    
         public string MainImage { get; set; }

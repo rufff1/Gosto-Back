@@ -5,6 +5,9 @@
 
 
 
+
+
+
 <section>
     <div class="register">
         <div class="col-lg-12">
@@ -23,52 +26,75 @@
                         <div class="">
                             <h3 class=" mb-5">Create an account</h3>
                         </div>
-                        <form method="post" class="user">
+                        <form method="post" enctype="multipart/form-data" class="user">
                             <div asp-validation-summary="ModelOnly" class="text text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Name" class="">Name<span>*</span></label>
-                                <input asp-for="Name" class="form-control form-control-user"
-                                       placeholder="Name">
+                                <input asp-for="Name" class="form-control form-control-user" placeholder="Name">
                                 <span asp-validation-for="Name" class="text text-danger"></span>
 
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Username" class="">User Name<span>*</span></label>
-                                <input asp-for="Username" class="form-control form-control-user"
-                                       placeholder="User Name">
+                                <input asp-for="Username" class="form-control form-control-user" placeholder="User Name">
                                 <span asp-validation-for="Username" class="text text-danger"></span>
 
                             </div>
+
                             <div class="form-group">
                                 <label asp-for="Email" class="">Email <span>*</span></label>
-                                <input asp-for="Email" class="form-control form-control-user"
-                                       aria-describedby="emailHelp"
-                                       placeholder="Email">
+                                <input asp-for="Email" class="form-control form-control-user" placeholder="Email">
                                 <span asp-validation-for="Email" class="text text-danger"></span>
 
                             </div>
                             <div class="form-group">
+                                <label asp-for="Job" class="">Job<span></span></label>
+                                <input asp-for="Job" class="form-control form-control-user" placeholder="Job">
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Country" class="">Country<span></span></label>
+                                <input asp-for="Country" class="form-control form-control-user" placeholder="Country">
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Phone" class="">Phone <span></span></label>
+                                <input asp-for="Phone" class="form-control form-control-user" placeholder="Phone">
+
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Adress" class="">Adress <span></span></label>
+                                <input asp-for="Adress" class="form-control form-control-user" placeholder="Adress">
+
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UserImageFile" class="">Image<span></span></label>
+                                <input asp-for="UserImageFile" class="form-control form-control-user" placeholder="Enter Image">
+                                <span asp-validation-for="UserImageFile" class="text text-danger"></span>
+                            </div>
+                            <div class="form-group">
                                 <label asp-for="Password" class="">Paswoord<span>*</span></label>
-                                <input asp-for="Password" class="form-control form-control-user"
-                                       placeholder="Password">
-                                <span asp-validation-for="Password" class="text text-danger"></span>
+                                <input asp-for="Password" class="form-control form-control-user" placeholder="Password">
+
 
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="ConfirmPassword" class="">Confirm Paswoord<span>*</span></label>
-                                <input asp-for="ConfirmPassword" class="form-control form-control-user"
-                                       placeholder="Confirm Password">
-                                <span asp-validation-for="ConfirmPassword" class="text text-danger"></span>
-
+                                <input asp-for="ConfirmPassword" class="form-control form-control-user" placeholder="Confirm Password">
                             </div>
 
-                            <div class="login-toggle-btn">
-                                <input asp-for="TermsAndConditions">
-                                <label asp-for="TermsAndConditions" for="remember">I agree with terms</label>
-                                <span asp-validation-for="TermsAndConditions" class="text text-danger"></span>
-
+                            <div class="form-check">
+                                <input asp-for="TermsAndConditions" class="form-check-input" required>
+                                <label asp-for="TermsAndConditions" class="form-check-label">I agree and accept the </label> <a>terms and conditions</a>
+                                <span class="text text-warning" asp-validation-for="TermsAndConditions"></span>
 
                             </div>
                             <div class="btn-create">
@@ -77,8 +103,6 @@
                         </form>
 
                      
-
-
                         <div class="btn-login">
                             <a class="small" asp-controller="account" asp-action="login"> <button class="button submit py-4 fw-bold" type="submit">LOGIN</button> </a>
                         </div>
@@ -89,3 +113,4 @@
         </div>
     </div>
 </section>
+

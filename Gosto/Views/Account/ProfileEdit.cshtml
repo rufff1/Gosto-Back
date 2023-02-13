@@ -1,0 +1,130 @@
+﻿@model ProfleVM
+@{
+    ViewData["Title"] = "ProfileEdit";
+}
+
+<section>
+    <div class="login">
+        <div class="col-lg-12">
+            <div class="path">
+                <a class="d-inline" asp-controller="home" asp-action="index">Home</a>
+                /
+
+                <p class="d-inline blog-name">Profile Edit</p>
+            </div>
+        </div>
+        <div class="containerr">
+            <div class="row">
+                <div class="col-xl-10 col-lg-12 col-md-9">
+
+                    <div class="p-5">
+                        <div class="">
+                            <h3 class=" mb-5">Login</h3>
+                        </div>
+                        <form method="post" enctype="multipart/form-data" class="user">
+                            <div class="row mb-3">
+                                <label asp-for="UserImageFile" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                <div class="col-md-8 col-lg-9">
+
+
+                                    <input asp-for="UserImageFile" class="form-control" />
+                                    <span asp-validation-for="UserImageFile" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label asp-for="Name" class="col-md-4 col-lg-3 col-form-label">Name</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="Name" class="form-control">
+                                </div>
+                                <span asp-validation-for="Name" class="text text-danger"></span>
+
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="UserName" class="col-md-4 col-lg-3 col-form-label">UserName</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="UserName" class="form-control">
+                                </div>
+                                <span asp-validation-for="UserName" class="text text-danger"></span>
+
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="Email" class="form-control">
+                                </div>
+                                <span asp-validation-for="Email" class="text text-danger"></span>
+
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="Country" class="form-control">
+                                </div>
+                                <span asp-validation-for="Country" class="text text-danger"></span>
+
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="Job" class="form-control">
+                                </div>
+                                <span asp-validation-for="Job" class="text text-danger"></span>
+
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="Adress" class="col-md-4 col-lg-3 col-form-label">Adress</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="Adress" class="form-control">
+                                </div>
+                                <span asp-validation-for="Adress" class="text text-danger"></span>
+
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="Phone" class="form-control">
+                                </div>
+                                <span asp-validation-for="Phone" class="text text-danger"></span>
+
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <label asp-for="CurrentPaswoord" class="col-md-4 col-lg-3 col-form-label">Current Paswoord</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="CurrentPaswoord" class="form-control">
+                                </div>
+                                <span asp-validation-for="CurrentPaswoord" class="text text-danger"></span>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <label asp-for="NewPaswoord" class="col-md-4 col-lg-3 col-form-label">New Paswoord</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="NewPaswoord" class="form-control">
+                                </div>
+                                <span asp-validation-for="NewPaswoord" class="text text-danger"></span>
+
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="ConfirmPaswoord" class="col-md-4 col-lg-3 col-form-label">Confirm Paswoord</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input asp-for="ConfirmPaswoord" class="form-control">
+                                </div>
+                                <span asp-validation-for="ConfirmPaswoord" class="text text-danger"></span>
+                                      </div>
+                                <div class="btn-login">
+                                    <button class="button submit py-4 fw-bold" type="submit">Edit</button>
+                                </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

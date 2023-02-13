@@ -39,6 +39,8 @@
     <Compile Remove="Migrations\20230129230158_CreatedColorTableAndRelation.Designer.cs" />
     <Compile Remove="Migrations\20230129230256_CreatedColorsTableAndRelation.cs" />
     <Compile Remove="Migrations\20230129230256_CreatedColorsTableAndRelation.Designer.cs" />
+    <Compile Remove="Migrations\20230213215831_CreatedContactTable.cs" />
+    <Compile Remove="Migrations\20230213215831_CreatedContactTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

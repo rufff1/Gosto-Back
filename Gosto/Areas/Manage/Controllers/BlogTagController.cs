@@ -1,6 +1,7 @@
 ﻿using Gosto.DAL;
 using Gosto.Models;
 using Gosto.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace Gosto.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class BlogTagController : Controller
     {
         private readonly AppDbContext _context;

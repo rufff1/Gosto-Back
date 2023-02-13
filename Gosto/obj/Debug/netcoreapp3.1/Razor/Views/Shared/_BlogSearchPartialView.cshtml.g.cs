@@ -40,8 +40,15 @@ using Gosto.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\_ViewImports.cshtml"
+using Gosto.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bdc7c551c35e054cc0d3247694adcf4d6e1b60ca", @"/Views/Shared/_BlogSearchPartialView.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e8d6a45a406e3afca49c09987acccb638aa39b67", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b611db0d3a6cb81a1bff47c8287cb14f1636e552", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__BlogSearchPartialView : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<SearchVM>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString("Alternate Text"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -91,9 +98,9 @@ using Gosto.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("<li style=\"margin-bottom:13px\">\n    <div style=\"align-items:center;display:flex;\">\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bdc7c551c35e054cc0d3247694adcf4d6e1b60ca5803", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bdc7c551c35e054cc0d3247694adcf4d6e1b60ca5980", async() => {
                 WriteLiteral("\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bdc7c551c35e054cc0d3247694adcf4d6e1b60ca6068", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bdc7c551c35e054cc0d3247694adcf4d6e1b60ca6245", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -149,7 +156,7 @@ AddHtmlAttributeValue("", 313, item.Image, 313, 11, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bdc7c551c35e054cc0d3247694adcf4d6e1b60ca9939", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bdc7c551c35e054cc0d3247694adcf4d6e1b60ca10116", async() => {
 #nullable restore
 #line 13 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\Shared\_BlogSearchPartialView.cshtml"
                                                                                                                      Write(item.Name);

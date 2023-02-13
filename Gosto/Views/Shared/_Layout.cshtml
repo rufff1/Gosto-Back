@@ -4,6 +4,7 @@
     Dictionary<string, string> settings = await layoutService.GetSettingsAsync();
 
     IEnumerable<BasketVM> basketVMs = await layoutService.GetBasketVMsAsync();
+   
  }
 
 
@@ -222,25 +223,7 @@
                             <div class="right text-end ">
                                 <div class="al d-flex align-items-center">
 
-                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
-                                    {
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                @User.Identity.Name
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a  asp-controller="account" asp-action="profile" class="dropdown-item" >Profile</a></li>
-                                                <li><a class="dropdown-item"  asp-controller="account" asp-action="logout">Another action</a></li>
-                                         
-                                            </ul>
-                                        </div>
-                                    }
-                                    else
-                                    {
 
-                                        <a class="me-3" asp-controller="account" asp-action="Login">Login</a>
-                                        <a class="me-4" asp-controller="account" asp-action="register">Register</a>
-                                    }
                                     <input class="me-2" type="text" placeholder="search">
                                     <div class="barside-wish me-4">
                                         <div class="icon">
@@ -252,6 +235,25 @@
                                     <div class="header-cart">
                                         @await Html.PartialAsync("_BasketCardPartial", basketVMs)
                                     </div>
+
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                    {
+                           
+                                                <div class="dropdown-account">
+                                                    <div class="default d-flex align-items-center">
+                                                        <a class="hr  me-3">@User.Identity.Name</a>
+                                                        <i class="fa-solid fa-chevron-down"></i>
+                                                    </div>
+                                                    <div class="db-contect-account text-start">
+                                                        <a asp-controller="account" asp-action="profile">My Profile</a>
+                                                        <a asp-controller="account" asp-action="profileedit">Profile Edit</a>
+                                                        <a asp-controller="account" asp-action="logout">Sign Out</a>
+                                                    </div>
+                                                </div> }
+                                            else
+                                            {
+                                <a class="me-3" asp-controller="account" asp-action="Login">Login</a>
+                                                <a class="me-4" asp-controller="account" asp-action="register">Register</a>}
                                 </div>
 
                             </div>
@@ -381,7 +383,41 @@
 
 
 <style>
+
+
+    .dropdown-account {
+        position: relative;
+    }
+
+    .db-contect-account {
+        position: absolute;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        width: 130px;
+        left: -18px;
+        transition: .5s;
+        margin-top: 15px;
+        box-shadow: 1px 2px 1px rgb(230, 230, 230);
+        z-index: 1;
+    }
+        .db-contect-account a {
+            margin: 20px 0;
+            display: block;
+            padding-left: 20px;
+            color: #000;
+            font-weight: bold;
+         
+        }
+    .default a {
+        font-size:20px;
+    }
+    .dropdown-account:hover .db-contect-account {
+        opacity: 1;
+        visibility: visible;
+    }
   
+
     .mobile-cart .basket{
         opacity:0;
         visibility:hidden;

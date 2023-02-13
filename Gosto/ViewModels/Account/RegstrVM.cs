@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace Gosto.ViewModels
         [DataType(DataType.Password)]
         [Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
+        public string Job { get; set; }
+        public string Country { get; set; }
+        public string Adress { get; set; }
+        public string Phone { get; set; }
         public bool TermsAndConditions { get; set; }
+        public IFormFile UserImageFile { get; set; }
     }
 }

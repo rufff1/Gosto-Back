@@ -1,8 +1,6 @@
 ﻿@model PageNationList<Brand>
-@{
-    ViewData["Title"] = "Index";
-    int counter = Model.PageIndex == 1 ? 0 : (Model.PageIndex - 1) * 3;
-    }
+@{ ViewData["Title"] = "Index";
+    int counter = Model.PageIndex == 1 ? 0 : (Model.PageIndex - 1) * 3; }
 
 
 <div style=" width: 86%; margin-left: 17%; margin-top: 5%;">
@@ -15,13 +13,13 @@
         <thead>
             <tr>
                 <th>
-                   Image
+                    Image
                 </th>
                 <th>
-                Name
+                    Name
                 </th>
                 <th>
-                   BrandInfo
+                    BrandInfo
                 </th>
 
                 <th></th>
@@ -30,23 +28,23 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <img width="100" src="~/assets/img/Brand/@item.Image" alt="Alternate Text" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BrandInfo)
-                    </td>
-                    <td>
-                        <a class="btn btn-dark" asp-action="update" asp-route-id="@item.Id">Edit</a> |
-                        <a class="btn btn-dark" asp-action="Detail" asp-route-id="@item.Id">Details</a> |
-                        <a class="btn btn-dark delete-btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-            }
+<tr>
+    <td>
+        <img width="100" src="~/assets/img/Brand/@item.Image" alt="Alternate Text" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BrandInfo)
+    </td>
+    <td>
+        <a class="btn btn-dark" asp-action="update" asp-route-id="@item.Id">Edit</a> |
+        <a class="btn btn-dark" asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+        <a class="btn btn-dark delete-btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>
+       }
         </tbody>
     </table>
 
@@ -57,17 +55,17 @@
                 <ul class="pagination">
                     @if (Model.HasPrev)
                     {
-                        <li class="page-item"><a class="page-link" asp-area="manage" asp-controller="brand" asp-action="index" asp-route-pageIndex="@(Model.PageIndex-1)">Previous</a></li>
-                    }
+        <li class="page-item"><a class="page-link" asp-area="manage" asp-controller="brand" asp-action="index" asp-route-pageIndex="@(Model.PageIndex-1)">Previous</a></li>
+}
                     @for (int i = Model.Start; i <= Model.End; i++)
                     {
-                        <li class="page-item @(Model.PageIndex == i ? "active" :"")"><a class="page-link" asp-area="manage" asp-controller="brand" asp-action="index" asp-route-pageIndex="@i">@i</a></li>
-                    }
+        <li class="page-item @(Model.PageIndex == i ? "active" :"")"><a class="page-link" asp-area="manage" asp-controller="brand" asp-action="index" asp-route-pageIndex="@i">@i</a></li>
+}
 
                     @if (Model.HasNext)
                     {
-                        <li class="page-item"><a class="page-link" asp-area="manage" asp-controller="brand" asp-action="index" asp-route-pageIndex="@(Model.PageIndex+1)">Next</a></li>
-                    }
+        <li class="page-item"><a class="page-link" asp-area="manage" asp-controller="brand" asp-action="index" asp-route-pageIndex="@(Model.PageIndex+1)">Next</a></li>
+}
                 </ul>
             </nav>
         </div>
@@ -77,6 +75,8 @@
 
 @section Scripts{
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script></script>
+
     <script>
         $(".delete-btn").click(function (e) {
             e.preventDefault()

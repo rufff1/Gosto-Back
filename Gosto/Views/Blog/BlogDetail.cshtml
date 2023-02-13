@@ -43,15 +43,15 @@
                                     <div class="row">
 
                                         <div class="col-md-12">
-                                            <p>Subject</p>
+                                            <p  id="subj">Subject</p>
                                             <input asp-for="@Model.Blog.Comments.FirstOrDefault().Subject">
-                                            <p>Massage</p>
+                                            <p id="message">Massage</p>
                                             <textarea asp-for="@Model.Blog.Comments.FirstOrDefault().Message" cols="15" rows="10"></textarea>
                                             <p id="blogid" style="display:none">@Model.Blog.Id</p>
                                             <input type="hidden" asp-for="@Model.Blog.Comments.FirstOrDefault().BlogId" value="@Model.Blog.Id" />
                                         </div>
                                     </div>
-                                    <a class="reply-btn text-decoration-none" asp-controller="Blog" asp-action="AddComment" data-text="send"><span>send message</span></a>
+                                    <a class="reply-btn text-decoration-none" asp-controller="Blog" asp-action="AddComment" data-text="send" id="SendMessage"><span>send message</span></a>
                                     <p class="form-messege"></p>
                                 </form>
 

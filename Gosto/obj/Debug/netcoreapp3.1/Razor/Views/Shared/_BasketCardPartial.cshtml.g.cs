@@ -40,8 +40,15 @@ using Gosto.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\_ViewImports.cshtml"
+using Gosto.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"73358d8766d186626a8cfa248d3c766e4681d46e", @"/Views/Shared/_BasketCardPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e8d6a45a406e3afca49c09987acccb638aa39b67", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b611db0d3a6cb81a1bff47c8287cb14f1636e552", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__BasketCardPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<BasketVM>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString("product"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -93,8 +100,8 @@ using Gosto.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("            <li>\r\n                <div class=\"single-cart-item d-flex\">\r\n                    <div class=\"cart-item-thumb\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73358d8766d186626a8cfa248d3c766e4681d46e6455", async() => {
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "73358d8766d186626a8cfa248d3c766e4681d46e6671", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73358d8766d186626a8cfa248d3c766e4681d46e6632", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "73358d8766d186626a8cfa248d3c766e4681d46e6848", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -156,7 +163,7 @@ AddHtmlAttributeValue("", 626, basketVM.Image, 626, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("x</span>\r\n                    </div>\r\n                    <div class=\"cart-item-content media-body\">\r\n                        <h5 class=\"product-name\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73358d8766d186626a8cfa248d3c766e4681d46e10890", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73358d8766d186626a8cfa248d3c766e4681d46e11067", async() => {
 #nullable restore
 #line 23 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\Shared\_BasketCardPartial.cshtml"
                                                                                                                          Write(basketVM.Title);
@@ -203,7 +210,7 @@ AddHtmlAttributeValue("", 626, basketVM.Image, 626, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("</span>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73358d8766d186626a8cfa248d3c766e4681d46e13926", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73358d8766d186626a8cfa248d3c766e4681d46e14103", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-xmark\"></i>");
             }
             );

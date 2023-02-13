@@ -3,6 +3,7 @@ using Gosto.Extensions;
 using Gosto.Helpers;
 using Gosto.Models;
 using Gosto.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ using System.Threading.Tasks;
 namespace Gosto.Areas.Manage.Controllers
 {
     [Area("manage")]
-
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;

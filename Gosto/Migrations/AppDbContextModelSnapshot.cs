@@ -409,6 +409,9 @@ namespace Gosto.Migrations
                     b.Property<int?>("BlogId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("CreatAt")
                         .HasColumnType("datetime2");
 
@@ -451,6 +454,8 @@ namespace Gosto.Migrations
                     b.HasIndex("AppUserId");
 
                     b.HasIndex("BlogId");
+
+                    b.HasIndex("CommentId");
 
                     b.ToTable("Comments");
                 });
@@ -1461,6 +1466,10 @@ namespace Gosto.Migrations
                     b.HasOne("Gosto.Models.Blog", "Blog")
                         .WithMany("Comments")
                         .HasForeignKey("BlogId");
+
+                    b.HasOne("Gosto.Models.Comment", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("CommentId");
                 });
 
             modelBuilder.Entity("Gosto.Models.Product", b =>

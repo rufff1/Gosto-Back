@@ -3,6 +3,7 @@ using Gosto.Extensions;
 using Gosto.Helpers;
 using Gosto.Models;
 using Gosto.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace Gosto.Areas.Manage.Controllers
 {
     [Area("manage")]
-
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class ServiceController : Controller
     {
         private readonly AppDbContext _context;

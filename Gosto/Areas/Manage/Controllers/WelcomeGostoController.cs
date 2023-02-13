@@ -1,5 +1,6 @@
 ﻿using Gosto.DAL;
 using Gosto.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace Gosto.Areas.Manage.Controllers
 {
     [Area("manage")]
-
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class WelcomeGostoController : Controller
     {
         private readonly AppDbContext _context;

@@ -15,237 +15,103 @@ using Microsoft.Extensions.Configuration;
 using Gosto.ViewModels.Account;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Gosto.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using Gosto.Helpers;
 
 namespace Gosto.Controllers
 {
     public class AccountController : Controller
     {
-
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private IWebHostEnvironment _env;
         private readonly AppDbContext _context;
-        public readonly IWebHostEnvironment _env;
-        private readonly IConfiguration _config;
 
-        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, AppDbContext context, IConfiguration config, IWebHostEnvironment env)
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env, AppDbContext context)
         {
             _roleManager = roleManager;
-            _userManager = userManager;
             _signInManager = signInManager;
-            _context = context;
-            _config = config;
+            _userManager = userManager;
             _env = env;
+            _context = context;
         }
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegstrVM register)
+        public async Task<IActionResult> Register(RegstrVM registerVM)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(registerVM);
             }
 
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("index", "home");
-            }
             AppUser appUser = new AppUser
             {
-                
-                Name = register.Name,
-                UserName = register.Username,
-                Email = register.Email,
-                isConfirmed = true
-
+                Name = registerVM.Name,
+                UserName = registerVM.Username,
+                Email = registerVM.Email,
+                Job = registerVM.Job,
+                Country = registerVM.Country,
+                Adress = registerVM.Adress,
+                Phone = registerVM.Phone
             };
 
-            if (!register.TermsAndConditions)
+   
+
+
+
+            if (!registerVM.UserImageFile.CheckFileType("image/jpeg"))
             {
-                ModelState.AddModelError("Terms", "Sozlesmeni qebul edin");
+                ModelState.AddModelError("UserImageFile", "Seçilmiş faylın tipi jpeg olmalıdır");
                 return View();
             }
+            if (!registerVM.UserImageFile.CheckFileSize(100))
+            {
+                ModelState.AddModelError("UserImageFile", "Secilmiş şəklin həcmi 100KB-dan artıq ola bilməz");
+                return View();
+            }
+            appUser.UserImageFile = registerVM.UserImageFile;
+            appUser.UserImage = appUser.UserImageFile.CreateImage(_env, "manage", "img", "user");
 
-            string token = Guid.NewGuid().ToString();
-            appUser.EmailConfirmationToken = token;
 
-
-
-            IdentityResult identityResult = await _userManager.CreateAsync(appUser, register.Password);
-
+            IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerVM.Password);
             if (!identityResult.Succeeded)
             {
                 foreach (var item in identityResult.Errors)
                 {
                     ModelState.AddModelError("", item.Description);
                 }
-                return View();
+                return View(registerVM);
             }
+
+            
+
+
             await _userManager.AddToRoleAsync(appUser, "Member");
+            return RedirectToAction("login");
 
-            var link = Url.Action(nameof(VerifyEmail), "Account", new { id = appUser.Id, token }, Request.Scheme, Request.Host.ToString());
-
-            EmailVM email = _config.GetSection("Email").Get<EmailVM>();
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress(appUser.Email, "Gosto");
-            mail.To.Add(appUser.Email);
-            mail.Subject = "VerifyEmail";
-            string body = "";
-            using (StreamReader reader = new StreamReader("wwwroot/assets/Template/verifyemail.html"))
-            {
-                body = reader.ReadToEnd();
-            }
-            body = body.Replace("{link}", link);
-           
-            mail.Body = body;
-            mail.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = email.Server;
-            smtp.Port = email.Port;
-            smtp.EnableSsl = true;
-            smtp.Credentials = new NetworkCredential(email.SenderEmail, email.Password);
-            smtp.Send(mail);
-           
-
-            return RedirectToAction(nameof(EmailVerification));
 
         }
-        public IActionResult EmailVerification() => View();
 
-
-
-        public async Task<IActionResult> VerifyEmail(string id, string token)
+        [HttpGet]
+        public async Task<IActionResult> Login()
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                return NotFound();
-            }
-            AppUser user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
-
-            if (user.EmailConfirmationToken != token)
-            {
-                return BadRequest();
-            }
-
-            var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-            IdentityResult result = await _userManager.ConfirmEmailAsync(user, emailConfirmationToken);
-
-            if (result.Succeeded)
-            {
-                string newToken = Guid.NewGuid().ToString();
-                user.EmailConfirmationToken = newToken;
-                await _userManager.UpdateAsync(user);
-                return View();
-            }
-
-
-
-            return BadRequest();
-        }
-
-
-
-        public IActionResult ResetPassword() => View();
-
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(ResetPasswordVM reset)
-        {
-            if (string.IsNullOrWhiteSpace(reset.Email))
-            {
-                ModelState.AddModelError(string.Empty, "E-poçt ünvanını daxil edin");
-                return View();
-            }
-            AppUser user = await _userManager.FindByEmailAsync(reset.Email);
-            if (user == null)
-            {
-                ModelState.AddModelError(string.Empty, "Daxil etdiyiniz hesab movcud deyil");
-                return View();
-            }
-            var link = Url.Action(nameof(NewPassword), "Account", new { id = user.Id, token = user.PasswordResetToken }, Request.Scheme, Request.Host.ToString());
-            EmailVM email = _config.GetSection("Email").Get<EmailVM>();
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress(email.SenderEmail, "Gosto");
-            mail.To.Add(reset.Email);
-            mail.Subject = "Reset Password";
-            mail.Body = $"<a href=\"{link}\">Reset Password</a>";
-            mail.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = email.Server;
-            smtp.Port = email.Port;
-            smtp.EnableSsl = true;
-            smtp.Credentials = new NetworkCredential(email.SenderEmail, email.Password);
-            smtp.Send(mail);
-
-            return RedirectToAction(nameof(EmailVerification));
-        }
-
-
-        public IActionResult NewPassword(ResetPasswordVM reset)
-        {
-            return View(reset);
-        }
-
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ActionName("NewPassword")]
-        public async Task<IActionResult> NewPasswordPost(ResetPasswordVM reset)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(reset);
-            }
-            if (reset.Id == null)
-            {
-                return NotFound();
-            }
-            AppUser user = await _userManager.FindByIdAsync(reset.Id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            if (user.PasswordResetToken != reset.Token)
-            {
-                return BadRequest();
-            }
-
-            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-            IdentityResult result = await _userManager.ResetPasswordAsync(user, resetToken, reset.Password);
-
-
-
-            if (result.Succeeded)
-            {
-                string passwordResetToken = Guid.NewGuid().ToString();
-                user.PasswordResetToken = passwordResetToken;
-                await _userManager.UpdateAsync(user);
-                return RedirectToAction("Login");
-            }
-            return BadRequest();
-        }
-
-
-        public IActionResult Login()
-        {
-
-        
-
-
             return View();
         }
-
-        public IActionResult ConfirmByAdmin() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -253,103 +119,202 @@ namespace Gosto.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(loginVM);
             }
-            AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.ToUpperInvariant());
-
+            AppUser appUser = await _userManager.FindByEmailAsync(loginVM.Email);
             if (appUser == null)
             {
-                ModelState.AddModelError("", "E-poçt və ya şifrəniz yanlışdır");
-                return View();
+                ModelState.AddModelError("", "Email ve ya Paswoord duzgun qeyd edin");
+                return View(loginVM);
             }
-
-            if (!await _userManager.IsEmailConfirmedAsync(appUser))
+            Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.CheckPasswordSignInAsync(appUser, loginVM.Password, true);
+            if (signInResult.IsLockedOut)
             {
-                ModelState.AddModelError("", "Zəhmət olmasa ilk öncə hesabınızı təsdiqləyin!");
-                return View();
+                ModelState.AddModelError("", "Sifreni 3 defeden artig sehf yigdiginiz ucun bloklandiniz");
+                return View(loginVM);
             }
-
-            if (appUser.isConfirmed == false)
-            {
-                return RedirectToAction(nameof(ConfirmByAdmin));
-            }
-
-            if (!await _userManager.IsEmailConfirmedAsync(appUser))
-            {
-                ModelState.AddModelError("", "Zəhmət olmasa ilk öncə hesabınızı təsdiqləyin!");
-                return View();
-            }
-
-        
-
-            Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(appUser, loginVM.Password, loginVM.RememberMe, true);
-
             if (!signInResult.Succeeded)
             {
-                if (signInResult.IsLockedOut)
-                {
-                    ModelState.AddModelError("", "Hesabınız 10 dəqiqə muddətinə bloklanıb");
-                    return View();
-                }
-                ModelState.AddModelError("", "E-poçt və ya şifrəniz yanlışdır");
-
-                return View();
+                ModelState.AddModelError("", "Email ve ya Paswoord duzgun qeyd edin");
+                return View(loginVM);
             }
             await _signInManager.PasswordSignInAsync(appUser, loginVM.Password, loginVM.RememberMe, true);
-            return RedirectToAction("index", "home");
+            return RedirectToAction("Index", "Home");
+
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Profile()
+        {
+            AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            ProfleVM profileVM = new ProfleVM
+            {
+                Name = appUser.Name,
+                UserName = appUser.UserName,
+                Email = appUser.Email,
+                Job = appUser.Job,
+                Adress = appUser.Adress,
+                Country = appUser.Country,
+                Phone = appUser.Phone,
+                UserImage = appUser.UserImage,
+
+
+            };
+
+
+            return View(profileVM);
+        }
 
 
 
-            //string coockieBasket = HttpContext.Request.Cookies["basket"];
-
-            //if (!string.IsNullOrWhiteSpace(coockieBasket))
-            //{
-            //    List<BasketVM> basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(coockieBasket);
-
-            //    List<basket> baskets = new List<Basket>();
-            //    List<Basket> existedBasket = await _context.Baskets.Where(b => b.AppUserId == appUser.Id).ToListAsync();
-            //    foreach (BasketVM basketVM in basketVMs)
-            //    {
-            //        if (existedBasket.Any(b => b.ProductId == basketVM.ProductId && b.ColorId == basketVM.ColorId && b.MaterialId == basketVM.MaterialId))
-            //        {
-            //            existedBasket.Find(b => b.ProductId == basketVM.ProductId && b.ColorId == basketVM.ColorId && b.MaterialId == basketVM.MaterialId).Count = basketVM.Count;
-            //        }
-            //        else
-            //        {
-            //            Basket basket = new Basket
-            //            {
-            //                AppUserId = appUser.Id,
-            //                ProductId = basketVM.ProductId,
-            //                Count = basketVM.Count,
-            //                ColorId = basketVM.ColorId,
-            //                MaterialId = basketVM.MaterialId,
-            //                CreatedAt = DateTime.UtcNow.AddHours(4)
-            //            };
-
-            //            baskets.Add(basket);
-            //        }
 
 
-            //    }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ProfileEdit()
+        {
+            AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            ProfleVM profileVM = new ProfleVM
+            {
+                Name = appUser.Name,
+                UserName = appUser.UserName,
+                Email = appUser.Email,
+                Job = appUser.Job,
+                Adress = appUser.Adress,
+                Country = appUser.Country,
+                Phone = appUser.Phone,
+                UserImage = appUser.UserImage,
 
-            //    if (baskets.Count > 0)
-            //    {
-            //        await _context.Baskets.AddRangeAsync(baskets);
-            //        await _context.SaveChangesAsync();
-            //    }
-            //}
+
+            };
 
 
+            return View(profileVM);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> ProfileEdit(ProfleVM profileVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(profileVM);
+            }
+            bool check = false;
+
+            AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (appUser.Name.ToLowerInvariant() != profileVM.Name.Trim().ToLowerInvariant())
+            {
+                check = true;
+                appUser.Name = profileVM.Name.Trim();
+
+            }
+            if (appUser.NormalizedUserName != profileVM.UserName.Trim().ToUpperInvariant())
+            {
+                check = true;
+                appUser.UserName = profileVM.UserName.Trim();
+
+            }
+            if (appUser.NormalizedEmail != profileVM.Email.Trim().ToLowerInvariant())
+            {
+                check = true;
+                appUser.Email = profileVM.Email.Trim();
+
+            }
+            if (appUser.Phone != profileVM.Phone.Trim().ToLowerInvariant())
+            {
+                check = true;
+                appUser.Email = profileVM.Email.Trim();
+
+            }
+            profileVM.UserImage = appUser.UserImage;
+
+       
+            if (!profileVM.UserImageFile.CheckFileType("image/jpeg"))
+            {
+                ModelState.AddModelError("UserImageFile", "Seçilmiş faylın tipi jpeg olmalıdır");
+                return View();
+            }
+            if (!profileVM.UserImageFile.CheckFileSize(100))
+            {
+                ModelState.AddModelError("UserImageFile", "Secilmiş şəklin həcmi 100KB-dan artıq ola bilməz");
+                return View();
+            }
+            if (appUser.UserImage != null)
+            {
+                Helper.DeleteFile(_env, appUser.UserImage, "manage", "img", "user");
+            }
+            appUser.UserImage = profileVM.UserImageFile.CreateImage(_env, "manage", "img", "user");
+
+
+
+            if (check)
+            {
+                appUser.UserName = profileVM.UserName;
+                appUser.Job = profileVM.Job;
+                appUser.Adress = profileVM.Adress;
+                appUser.Country = profileVM.Country;
+                appUser.Phone = profileVM.Phone;
+
+                IdentityResult identityResult = await _userManager.UpdateAsync(appUser);
+                if (!identityResult.Succeeded)
+                {
+                    foreach (var item in identityResult.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                    return View(profileVM);
+                }
+            }
+            if (!string.IsNullOrWhiteSpace(profileVM.CurrentPaswoord))
+            {
+                if (!await _userManager.CheckPasswordAsync(appUser, profileVM.CurrentPaswoord))
+                {
+                    ModelState.AddModelError("CurrentPaswoord", "Sifrenizi duzgun daxil edin");
+                    return View(profileVM);
+
+                }
+                if (profileVM.NewPaswoord == profileVM.CurrentPaswoord)
+                {
+                    ModelState.AddModelError("NewPaswoord", "Yeni Sifrenizle hal-hazirdaki eynidir");
+                    return View(profileVM);
+
+                }
+
+                string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+                IdentityResult identityResult = await _userManager.ResetPasswordAsync(appUser, token, profileVM.NewPaswoord);
+
+                if (!identityResult.Succeeded)
+                {
+                    foreach (var item in identityResult.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                    return View(profileVM);
+
+                }
+            }
+
+
+
+
+
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(Login));
         }
 
-        
 
-     
+
+
+
+
+
+
     }
 }

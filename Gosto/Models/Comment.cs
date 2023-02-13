@@ -18,6 +18,7 @@ namespace Gosto.Models
 
         public bool IsAccepted { get; set; }
 
+        public IEnumerable<Comment> Comments { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
 

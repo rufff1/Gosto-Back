@@ -39,6 +39,7 @@ namespace Gosto.DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
 
 

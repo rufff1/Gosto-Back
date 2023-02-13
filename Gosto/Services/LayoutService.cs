@@ -3,6 +3,7 @@ using Gosto.Interfaces;
 using Gosto.Models;
 using Gosto.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -16,16 +17,19 @@ namespace Gosto.Services
     {
         private readonly AppDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserManager<AppUser> _userManager;
 
 
 
-        public LayoutService(AppDbContext context, IHttpContextAccessor httpContextAccessor)
+
+        public LayoutService(AppDbContext context, IHttpContextAccessor httpContextAccessor, UserManager<AppUser>  userManager)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
          
         }
-
+    
 
         public async Task<IEnumerable<BasketVM>> GetBasketVMsAsync()
         {

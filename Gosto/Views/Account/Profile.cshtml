@@ -1,0 +1,167 @@
+﻿@model ProfleVM
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<main id="main" class="main " >
+
+    <div class="pagetitle">
+        <h1>Profile</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item active">Profile</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-3">
+
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                        @if (Model.UserImage != null)
+                        {
+
+                            <img src="~/manage/img/user/@Model.UserImage" alt="Profile" class="rounded-circle">
+                        }
+                        else
+                        {
+                            <img src="~/manage/img/user/nulluser.jpg" alt="Profile" class="rounded-circle">
+
+                        }
+                        <h2>@Model.UserName</h2>
+                        <h3>@Model.Job</h3>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+
+                        <div class="tab-content pt-2">
+
+                            <div class="tab-pane  show active profile-overview">
+
+
+                                <h5 class="card-title">Profile Details</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Name</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Name</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">User Name</div>
+                                    <div class="col-lg-9 col-md-8">@Model.UserName</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Job</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Job</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Country</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Country</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Address</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Adress</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Phone</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Email</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Email</div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                        </div><!-- End Bordered Tabs -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+
+<style>
+    .profile{
+        margin-left:30px;
+    }
+    #main {
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    .profile .profile-card img {
+        max-width: 120px;
+    }
+
+    .profile .profile-card h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2c384e;
+        margin: 10px 0 0 0;
+    }
+
+    .profile .profile-card h3 {
+        font-size: 18px;
+    }
+
+    .profile .profile-card .social-links a {
+        font-size: 20px;
+        display: inline-block;
+        color: rgba(1, 41, 112, 0.5);
+        line-height: 0;
+        margin-right: 10px;
+        transition: 0.3s;
+    }
+
+        .profile .profile-card .social-links a:hover {
+            color: #012970;
+        }
+
+    .profile .profile-overview .row {
+        margin-bottom: 20px;
+        font-size: 15px;
+    }
+
+    .profile .profile-overview .card-title {
+        color: #012970;
+    }
+
+    .profile .profile-overview .label {
+        font-weight: 600;
+        color: rgba(1, 41, 112, 0.6);
+    }
+
+    .profile .profile-edit label {
+        font-weight: 600;
+        color: rgba(1, 41, 112, 0.6);
+    }
+
+    .profile .profile-edit img {
+        max-width: 120px;
+    }
+</style>

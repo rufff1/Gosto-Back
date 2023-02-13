@@ -3,6 +3,7 @@ using Gosto.DAL;
 using Gosto.Extensions;
 using Gosto.Helpers;
 using Gosto.Models;
+using Gosto.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 namespace Gosto.Areas.Manage.Controllers
 {
     [Area("manage")]
+  
 
     public class AccountController : Controller
     {
@@ -32,9 +34,15 @@ namespace Gosto.Areas.Manage.Controllers
             _env = env;
             _context = context;
         }
-        public IActionResult Index()
+
+        [Authorize(Roles = "Admin,SuperAdmin")]
+
+        public IActionResult Index(int pageIndex)
         {
-            return View();
+            IQueryable<AppUser> users = _userManager.Users;
+
+            return View(PageNationList<AppUser>.Create(users, pageIndex, 3));
+        
         }
 
 
@@ -70,7 +78,7 @@ namespace Gosto.Areas.Manage.Controllers
 
             if (registerVM.UserImageFile == null)
             {
-                ModelState.AddModelError("UserImageFile", "Mağaza şəklini yükləməyiniz tələb olunur");
+                ModelState.AddModelError("UserImageFile", "Profile şəklini yükləməyiniz tələb olunur");
                 return View();
             }
             if (!registerVM.UserImageFile.CheckFileType("image/jpeg"))

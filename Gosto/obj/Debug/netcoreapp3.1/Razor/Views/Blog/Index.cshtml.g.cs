@@ -40,8 +40,15 @@ using Gosto.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\_ViewImports.cshtml"
+using Gosto.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"88c25c93605880367d4143201428e70564927a45", @"/Views/Blog/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e8d6a45a406e3afca49c09987acccb638aa39b67", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b611db0d3a6cb81a1bff47c8287cb14f1636e552", @"/Views/_ViewImports.cshtml")]
     public class Views_Blog_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PageNationList<Blog>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("d-inline"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using Gosto.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\n<section>\n    <div class=\"blog-list\">\n        <div class=\"containerr\">\n            <div class=\"row\">\n                <div class=\"col-lg-12\">\n                    <div class=\"path\">\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a456592", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a456769", async() => {
                 WriteLiteral("Home");
             }
             );
@@ -115,9 +122,9 @@ using Gosto.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"col-lg-4\">\n        <div class=\"card\">\n            <div class=\"img\">\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a458516", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a458693", async() => {
                 WriteLiteral("\n\n                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "88c25c93605880367d4143201428e70564927a458791", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "88c25c93605880367d4143201428e70564927a458968", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -184,7 +191,7 @@ AddHtmlAttributeValue("", 838, blog.Image, 838, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("</a></span>\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4513173", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4513350", async() => {
                 WriteLiteral("<h5 class=\"card-title\">");
 #nullable restore
 #line 30 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\Blog\Index.cshtml"
@@ -291,7 +298,7 @@ Write(blog.Description1);
 #line hidden
 #nullable disable
             WriteLiteral("            <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4518011", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4518188", async() => {
                 WriteLiteral("Previous");
             }
             );
@@ -352,7 +359,7 @@ WriteAttributeValue(" ", 2144, Model.PageIndex == i ? "active" :"", 2145, 38, fa
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4521419", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4521596", async() => {
 #nullable restore
 #line 60 "C:\Users\ROG\source\repos\Gosto\Gosto\Views\Blog\Index.cshtml"
                                                                                                                                                             Write(i);
@@ -409,7 +416,7 @@ WriteAttributeValue(" ", 2144, Model.PageIndex == i ? "active" :"", 2145, 38, fa
 #line hidden
 #nullable disable
             WriteLiteral("            <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4524698", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88c25c93605880367d4143201428e70564927a4524875", async() => {
                 WriteLiteral("Next");
             }
             );
