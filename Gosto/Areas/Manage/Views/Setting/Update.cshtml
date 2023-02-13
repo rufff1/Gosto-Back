@@ -6,7 +6,7 @@
 
 <div style=" width: 86%; margin-left: 17%; margin-top: 5%; ">
 
-    <h2 >Update</h2>
+    <h2>Update</h2>
 
 
     <hr />
@@ -36,4 +36,8 @@
         <a class="btn btn-dark" asp-action="Index">Back to List</a>
     </div>
 
-</div>>
+</div>
+
+@section script{
+    @await Html.PartialAsync("_ValidationPartial")
+}

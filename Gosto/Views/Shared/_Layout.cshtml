@@ -109,6 +109,12 @@
 
                                                     </div>
                                                 </li>
+                                                <li class="menu-item">
+                                                    <div class="left">
+                                                        <a asp-controller="account" asp-action="profile">Profile</a>
+
+                                                    </div>
+                                                </li>
 
                                             </ul>
                                         </div>
@@ -126,7 +132,7 @@
                                 <div class="barside-basket text-end ">
                                     <div class="icon d-flex justify-content-end align-items-center">
                                         <a class=" pe-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="icon-basket fa-solid fa-store"></i></a>
-                                      
+
                                     </div>
 
                                     <div class="offcanvas offcanvas-end side-bar-right" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -146,7 +152,7 @@
                                                     </div>
 
                                                 </div>
-                                             
+
 
                                             </div>
                                         </div>
@@ -200,8 +206,7 @@
                                     <a class="hr">PAGES</a>
                                 </div>
                                 <div class="db-contect">
-                                    <a asp-controller="ourteam" asp-action="index">Our Team</a>
-                                    <a asp-controller="account" asp-action="profile">My Account</a>
+                                    <a asp-controller="ourteam" asp-action="index">Our Team</a>                                   
                                     <a asp-controller="wishlist" asp-action="index">Wishlist</a>
                                 </div>
                             </div>
@@ -216,8 +221,26 @@
                         <div class="row">
                             <div class="right text-end ">
                                 <div class="al d-flex align-items-center">
-                                    <a class="me-3" asp-controller="account" asp-action="login">Login</a>
-                                    <a class="me-4" asp-controller="account" asp-action="register">Register</a>
+
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                    {
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                @User.Identity.Name
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a  asp-controller="account" asp-action="profile" class="dropdown-item" >Profile</a></li>
+                                                <li><a class="dropdown-item"  asp-controller="account" asp-action="logout">Another action</a></li>
+                                         
+                                            </ul>
+                                        </div>
+                                    }
+                                    else
+                                    {
+
+                                        <a class="me-3" asp-controller="account" asp-action="Login">Login</a>
+                                        <a class="me-4" asp-controller="account" asp-action="register">Register</a>
+                                    }
                                     <input class="me-2" type="text" placeholder="search">
                                     <div class="barside-wish me-4">
                                         <div class="icon">
@@ -344,6 +367,9 @@
     <script src="~/assets/js/blog-detail.js"></script>
     <script src="~/assets/js/wishlist.js"></script>
     <script src="~/assets/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
 
 
 

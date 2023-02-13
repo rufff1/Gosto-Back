@@ -38,6 +38,7 @@ namespace Gosto.DAL
         public DbSet<Color> Colors { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
 
 

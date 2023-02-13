@@ -39,4 +39,8 @@
         <a class="btn btn-dark" asp-action="Index">Back to List</a>
     </div>
 
-    </div>
+</div>
+
+@section script{
+    @await Html.PartialAsync("_ValidationPartial")
+}

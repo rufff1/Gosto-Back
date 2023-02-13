@@ -114,7 +114,8 @@
                             <input type="text" value="1" />
                             <span class="plus">+</span>
                         </div>
-                        <button type="submit">ADD TO CART</button>
+                        <button  type="submit"> <a class="addtobasket text-decoration-none text-white" asp-controller="basket" asp-action="addtobasket" 
+                               asp-route-id="@Model.Product.Id">ADD TO CART</a> </button>
                     </div>
 
 

@@ -150,68 +150,65 @@
 
                 @if (appUser != null)
                 {
-            <li class="nav-item dropdown pe-3">
+    <li class="nav-item dropdown pe-3">
 
-                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    @if (appUser.UserImage != null)
-                    {
-                        <img src="~/manage/img/user/@appUser.UserImage" alt="Profile" class="rounded-circle">
-                                        }
-                                        else
-                                        {
-                                            <img src="~/manage/img/user/nulluser.jpg" alt="Profile" class="rounded-circle">
-                                        }
-                    <span class="d-none d-md-block dropdown-toggle ps-2">@appUser.Name</span>
-                </a><!-- End Profile Iamge Icon -->
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            @if (appUser.UserImage != null)
+            {
+<img src="~/manage/img/user/@appUser.UserImage" alt="Profile" class="rounded-circle"> }
+else
+{
+<img src="~/manage/img/user/nulluser.jpg" alt="Profile" class="rounded-circle">}
+            <span class="d-none d-md-block dropdown-toggle ps-2">@appUser.Name</span>
+        </a><!-- End Profile Iamge Icon -->
 
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <li class="dropdown-header">
-                        <h6>@appUser.Name</h6>
-                        
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+                <h6>@appUser.Name</h6>
 
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" asp-area="manage" asp-controller="account" asp-action="profile">
-                            <i class="bi bi-person"></i>
-                            <span>My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
 
-                
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" asp-area="manage" asp-controller="account" asp-action="profileedit">
-                            <i class="bi bi-person"></i>
-                            <span>Profile Edit</span>
-                        </a>
-                    </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center" asp-area="manage" asp-controller="account" asp-action="profile">
+                    <i class="bi bi-person"></i>
+                    <span>My Profile</span>
+                </a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
 
-                  
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
 
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" asp-area="manage" asp-controller="account" asp-action="logout">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
-                        </a>
-                    </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center" asp-area="manage" asp-controller="account" asp-action="profileedit">
+                    <i class="bi bi-person"></i>
+                    <span>Profile Edit</span>
+                </a>
+            </li>
 
-                </ul><!-- End Profile Dropdown Items -->
-            </li><!-- End Profile Nav -->
-                }
-                else
-               {
-                  <li>
-                     <a asp-area="manage" asp-controller="account" asp-action="login"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log In</a>
-                   </li>
-               }  
+
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+
+            <li>
+                <a class="dropdown-item d-flex align-items-center" asp-area="manage" asp-controller="account" asp-action="logout">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Sign Out</span>
+                </a>
+            </li>
+
+        </ul><!-- End Profile Dropdown Items -->
+    </li><!-- End Profile Nav --> }
+else
+{
+<li>
+    <a asp-area="manage" asp-controller="account" asp-action="login"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log In</a>
+</li>
+}
             </ul>
         </nav><!-- End Icons Navigation -->
 
@@ -415,8 +412,7 @@
         </div>
     </footer><!-- End Footer -->
 
-    @RenderSection("script", false)
-    @RenderSection("Scripts", required: false)
+
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -439,6 +435,9 @@
     <!-- Template Main JS File -->
     <script src="~/manage/js/main.js"></script>
     <script src="~/manage/js/JavaScript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @RenderSection("script", false)
+    @RenderSection("Scripts", required: false)
 
 
 
