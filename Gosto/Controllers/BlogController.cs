@@ -22,11 +22,27 @@ namespace Gosto.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public async Task<IActionResult> Index(int pageIndex)
+        public async Task<IActionResult> Index()
         {
-            IQueryable<Blog> blogs = _context.Blogs.Where(b => b.IsDeleted == false);
 
-            return View(PageNationList<Blog>.Create(blogs, pageIndex, 6));
+            BlogVM blogVM = new BlogVM
+            {
+                Blog = await _context.Blogs
+            .Include(b => b.BlogCategory)
+            .Include(b => b.BlogTags)
+            .ThenInclude(bt => bt.BTag)
+
+            .FirstOrDefaultAsync(b => b.IsDeleted == false),
+                BlogCategories = await _context.BlogCategories.Include(b => b.Blogs).Where(b => b.IsDeleted == false).ToListAsync(),
+                BTags = await _context.BTags.Where(b => b.IsDeleted == false).ToListAsync(),
+                Blogs = await _context.Blogs
+         
+            .Where(b => b.IsDeleted == false).Take(3).ToListAsync(),
+
+
+            };
+
+            return View(blogVM);
         }
 
         public async Task<IActionResult> BlogDetail (int? id)
@@ -63,48 +79,69 @@ namespace Gosto.Controllers
 
         public async Task<IActionResult> CategoryFindBlog(int? id)
         {
+            BlogVM blogVM = new BlogVM
+            {
+
+                BlogCategories = await _context.BlogCategories.Include(b => b.Blogs).Where(b => b.IsDeleted == false).ToListAsync(),
+                BTags = await _context.BTags.Where(b => b.IsDeleted == false).ToListAsync(),
+                Blogs = await _context.Blogs
+          .Include(b => b.BlogCategory)
+          .Include(b => b.BlogTags)
+          .ThenInclude(bt => bt.BTag)
+          .Where(b => b.IsDeleted == false && b.BlogCategoryId == id).ToListAsync(),
+
+
+            };
+
+           
 
 
 
-            IEnumerable<Blog> blogs = await _context.Blogs
-                 .Include(b => b.BlogCategory)
-                 .Where(b => b.IsDeleted == false && b.BlogCategoryId == id).ToListAsync();
-
-            if (blogs.Count() < 1)
+            if (blogVM.Blogs.Count() < 1)
             {
                 return NotFound("Bu categoriyaya aid blog tapilmadi");
             }
 
-            if (blogs == null)
+            if (blogVM.Blogs == null)
             {
                 return NotFound("Id tapilmadi");
             }
 
-            return View(blogs);
+            return View(blogVM);
         }
 
 
         public async Task<IActionResult> TagFindBlog(int? id)
         {
 
-            List<Blog> blogs = await _context.Blogs
-                .Include(b => b.BlogTags)
-                .ThenInclude(bt => bt.BTag)
-                .Where(b => b.IsDeleted == false && b.BlogTags.Any(bt => bt.BTagId == id)).ToListAsync();
+            BlogVM blogVM = new BlogVM
+            {
+
+                BlogCategories = await _context.BlogCategories.Include(b => b.Blogs).Where(b => b.IsDeleted == false).ToListAsync(),
+                BTags = await _context.BTags.Where(b => b.IsDeleted == false).ToListAsync(),
+                Blogs = await _context.Blogs
+        .Include(b => b.BlogCategory)
+        .Include(b => b.BlogTags)
+        .ThenInclude(bt => bt.BTag)
+        .Where(b => b.IsDeleted == false && b.BlogTags.Any(bt => bt.BTagId == id)).ToListAsync(),
 
 
-            if (blogs.Count() < 1)
+            };
+
+
+
+            if (blogVM.Blogs.Count() < 1)
             {
                 return NotFound("Bu taga aid blog tapilmadi");
             }
 
-            if (blogs == null)
+            if (blogVM.Blogs == null)
             {
                 return NotFound("Id tapilmadi");
             }
 
 
-            return View(blogs);
+            return View(blogVM);
         }
 
 

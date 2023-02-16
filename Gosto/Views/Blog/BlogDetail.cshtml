@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="blog-details">
                         <div class="blog-details-img">
                             <img src="~/assets/img/Blog/@Model.Blog.Image" alt="blog-details">
@@ -68,81 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog-sidebar right ms-5">
-                        <div class="single-blog-widget mb-47">
-                            <h3>search</h3>
-                            <div class="blog-search">
-
-                                <form id="search" action="#">
-                                    <input style="outline:none" class="text-start searchInput" type="search" placeholder="Search blog" name="search" />
-                                </form>
-                                <ul class="searchList container" id="searcPar" style="background-color:white;z-index:123;width:70%;height:auto;text-decoration:none !important;border:1px solid;position:absolute;">
-                                </ul>
-
-                            </div>
-                        </div>
-                        <div class="single-blog-widget mt-5 category mb-47">
-                            <h4>Categories</h4>
-                            <ul>
-                                @foreach (var blogCategory in Model.BlogCategories)
-                                {
-
-
-                                    <li><a asp-controller="blog" asp-action="CategoryFindBlog" asp-route-id="@blogCategory.Id">@blogCategory.Name (@blogCategory.Blogs.Count())</a></li>
-
-                                }
-
-                            </ul>
-                        </div>
-                        <div class="single-blog-widget mb-47 latest-post pb-3">
-
-                            @foreach (var blog in Model.Blogs.OrderByDescending(b => b.Id).Take(1))
-                            {
-
-                                <div class="single-blog-banner">
-                                    <div class="img">
-                                        <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id" id="blog"><img src="~/assets/img/Blog/@blog.Image" alt="blog"></a>
-                                    </div>
-                                    <p class="blog-name text-center mt-2">@blog.Title</p>
-                                </div>
-                            }
-                            <h4>latest post</h4>
-
-                            @foreach (var blog in Model.Blogs.OrderByDescending(b => b.Id).Take(3))
-                            {
-                                <div class="single-post mb-30">
-                                    <div class="row">
-                                        <div class="single-post-img">
-                                            <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id">
-                                                <img src="~/assets/img/Blog/@blog.Image" alt="post">
-
-                                            </a>
-                                        </div>
-                                        <div class="single-post-content w-50">
-                                            <h5><a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id">@blog.Title.Substring(0, 26)</a></h5>
-                                            <p> @blog.Author / @blog.BlogTime.ToString("M MMMM yyyy")  </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            }
-
-                        </div>
-                        <div class="single-blog-widget tag">
-                            <h4>TAGS CLOUD</h4>
-                            <div class="single-tag">
-
-                                @foreach (var bTag in Model.BTags)
-                                {
-                                    <a asp-controller="blog" asp-action="tagfindblog" asp-route-id="@bTag.Id">@bTag.Name</a>
-
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

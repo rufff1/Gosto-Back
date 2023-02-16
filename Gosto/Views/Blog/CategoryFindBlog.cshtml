@@ -1,46 +1,85 @@
-﻿@model IEnumerable<Blog>
+﻿@model BlogVM
 @{
         ViewData["Title"] = "CategoryFindBlog";
 }
 
 <section>
-    <div class="blog-list" style="margin-top:5%">
+    <div class="blog-list" style="margin-top:3%">
         <div class="containerr">
             <div class="row">
-              
 
-                @foreach (var blog in Model)
-                {
+                <div class="col-lg-8">
+                    @foreach (var blog in Model.Blogs)
+                    {
 
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="img">
-                                <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id">
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="img">
+                                    <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id">
 
-                                    <img src="~/assets/img/Blog/@blog.Image" class="card-img-top" alt="">
-                                </a>
+                                        <img src="~/assets/img/Blog/@blog.Image" class="card-img-top" alt="">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <span class="blog-category"><a href="" tabindex="0">@blog.BlogCategory.Name</a></span>
+                                    <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id"><h5 class="card-title">@blog.Title</h5></a>
+                                    <p class="card-text">
+                                        @if (blog.Description1.Length > 60)
+                                        {
+                                            @blog.Description1.Substring(0, 60);
+                                        }
+                                        else
+                                        {
+                                            @blog.Description1}
+                                    </p>
+                                    <p class="blog-date">Post Date <span>@blog.BlogTime.ToString("M MMMM yyyy")</span></p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <span class="blog-category"><a href="" tabindex="0">@blog.BlogCategory.Name</a></span>
-                                <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id"><h5 class="card-title">@blog.Title</h5></a>
-                                <p class="card-text">
-                                    @if (blog.Description1.Length > 60)
+                        </div>
+                    }
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-sidebar right ms-5">
+                            <div class="single-blog-widget mb-47">
+                                <h3>search</h3>
+                                <div class="blog-search">
+
+                                    <form id="search" action="#">
+                                        <input style="outline:none" class="text-start searchInput" type="search" placeholder="Search blog" name="search" />
+                                    </form>
+                                    <ul class="searchList container" id="searcPar" style="background-color:white;z-index:123;width:70%;height:auto;text-decoration:none !important;border:1px solid;position:absolute;">
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="single-blog-widget mt-5 category mb-47">
+                                <h4>Categories</h4>
+                                <ul>
+                                    @foreach (var blogCategory in Model.BlogCategories)
                                     {
-                                        @blog.Description1.Substring(0, 60);
+
+
+                                        <li><a asp-controller="blog" asp-action="CategoryFindBlog" asp-route-id="@blogCategory.Id">@blogCategory.Name (@blogCategory.Blogs.Count())</a></li>
                                     }
-                                    else
+
+                                </ul>
+                            </div>
+                 
+                            <div class="single-blog-widget tag">
+                                <h4>TAGS CLOUD</h4>
+                                <div class="single-tag">
+
+                                    @foreach (var bTag in Model.BTags)
                                     {
-                                        @blog.Description1}
-                                </p>
-                                <p class="blog-date">Post Date <span>@blog.BlogTime.ToString("M MMMM yyyy")</span></p>
+                                        <a asp-controller="blog" asp-action="tagfindblog" asp-route-id="@bTag.Id">@bTag.Name</a>}
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                }
 
-
+                </div>
             </div>
-        </div>
     </div>
 </section>
 

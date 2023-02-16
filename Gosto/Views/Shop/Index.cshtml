@@ -1,7 +1,5 @@
 ﻿@model ShopVM
-@{ ViewData["Title"] = "Index";
-
-    }
+@{ ViewData["Title"] = "Index"; }
 
 <section>
     <div class="shop-list">
@@ -33,13 +31,12 @@
                                     </label>
                                 </div>   @foreach (var productCategory in Model.ProductCategories)
                                 {
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">
-                                            <a href="">@productCategory.Name (@productCategory.Products.Count())</a>
-                                        </label>
-                                    </div>
-                                }
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">
+                            <a href="">@productCategory.Name (@productCategory.Products.Count())</a>
+                        </label>
+                    </div>}
 
 
                             </div>
@@ -56,13 +53,12 @@
                             <div class="bdy">
                                 @foreach (var brand in Model.Brands)
                                 {
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">
-                                            <a href="">@brand.Name</a>
-                                        </label>
-                                    </div>
-                                }
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">
+                            <a href="">@brand.Name</a>
+                        </label>
+                    </div>}
 
 
                             </div>
@@ -81,17 +77,15 @@
 
                                 @foreach (var color in Model.Colors)
                                 {
-                                    <div class="chk align-items-center">
-                                        <div class="sb-checkbox">
-                                            <input type="checkbox" class="sb-checkbox__input" id="@color.Id" name="@color.Name">
-                                            <label class="sb-checkbox__label sb-checkbox__label--@color.Name.ToLower()" for="@color.Name">
-                                            </label>
-                                        </div>
-                                        <a href="">@color.Name</a>
-                                    </div>
-                                    <br>
-
-                                }
+                    <div class="chk align-items-center">
+                        <div class="sb-checkbox">
+                            <input type="checkbox" class="sb-checkbox__input" id="@color.Id" name="@color.Name">
+                            <label class="sb-checkbox__label sb-checkbox__label--@color.Name.ToLower()" for="@color.Name">
+                            </label>
+                        </div>
+                        <a href="">@color.Name</a>
+                    </div>
+                                    <br>}
 
 
 
@@ -161,6 +155,28 @@
                     <div class="product mt-5">
                         <div class="row">
                             @await Html.PartialAsync("_ProductListPartial", Model.Products)
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            @if (ViewBag.pageIndex > 1)
+                                            {
+                                <li class="page-item"><a class="page-link"  asp-controller="shop" asp-action="index" asp-route-pageIndex="@ViewBag.pageIndex-1)">Previous</a></li>
+}
+                                            @for (int i = 1; i <= ViewBag.totalpages; i++)
+                                            {
+                                <li class="page-item"><a class="page-link"  asp-controller="shop" asp-action="index" asp-route-pageIndex="@i">@i</a></li>
+}
+
+                                            @if (ViewBag.pageIndex < ViewBag.totalPages)
+                                            {
+                                <li class="page-item"><a class="page-link"  asp-controller="shop" asp-action="index" asp-route-pageIndex="@(ViewBag.pageIndex+1)">Next</a></li>
+}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
                         </div>
 
 
@@ -172,4 +188,9 @@
         </div>
     </div>
 </section>
+
+
+
+
+
 

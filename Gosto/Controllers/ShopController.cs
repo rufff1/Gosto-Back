@@ -18,7 +18,7 @@ namespace Gosto.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex)
         {
 
             ShopVM shopVM = new ShopVM
@@ -39,6 +39,16 @@ namespace Gosto.Controllers
 
             };
 
+
+            int totalPages = (int)Math.Ceiling((decimal)shopVM.Products.Count() / 7);
+            if (pageIndex < 1 || pageIndex > totalPages)
+            {
+                pageIndex = 1;
+            }
+
+            shopVM.Products = shopVM.Products.Skip((pageIndex - 1) * 3).Take(8).ToList();
+            ViewBag.totalpages = totalPages;
+            ViewBag.pageIndex = pageIndex;
 
             return View(shopVM);
         }
