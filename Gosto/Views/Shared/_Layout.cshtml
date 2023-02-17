@@ -225,7 +225,15 @@
                                 <div class="al d-flex align-items-center">
 
 
-                                    <input class="me-2" type="text" placeholder="search">
+                                      <div class="blog-search">
+
+                                    <form id="search" action="#">
+                                        <input style="outline:none" class="text-start searchInput me-2" type="search" placeholder="Search" name="search" />
+                                    </form>
+                                    <ul class="searchList container" id="searcPar" style="background-color:white;z-index:123;width:70%;height:auto;text-decoration:none !important;border:1px solid;border-bottom:none;position:absolute;">
+                                    </ul>
+
+                                </div>
                                     <div class="barside-wish me-4">
                                         <div class="icon">
                                             <a asp-controller="wishlist" asp-action="index" class="fs-3  px-3"><i class="fs-3 fa-regular fa-heart"></i></a>
@@ -237,7 +245,7 @@
                                         @await Html.PartialAsync("_BasketCardPartial", basketVMs)
                                     </div>
 
-                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                    @if (User.Identity.IsAuthenticated )
                                     {
 
                         <div class="dropdown-account">
@@ -246,6 +254,11 @@
                                 <i class="fa-solid fa-chevron-down"></i>
                             </div>
                             <div class="db-contect-account text-start">
+                                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                                {
+                                <a asp-area="manage" asp-controller="dashboard">Manage</a>
+
+                                }
                                 <a asp-controller="account" asp-action="profile">My Profile</a>
                                 <a asp-controller="account" asp-action="profileedit">Profile Edit</a>
                                 <a asp-controller="account" asp-action="logout">Sign Out</a>

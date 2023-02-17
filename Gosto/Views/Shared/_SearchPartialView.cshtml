@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SearchVM>
+@{ Layout = null; }
+
+
+
+@foreach (SearchVM item in Model)
+{
+<li style="margin-bottom:13px">
+    <div style="align-items:center;display:flex;">
+        <a style="width:25%; " asp-controller="shop" asp-action="Shopdetail" asp-route-id="@item.Id">
+            <img src="~/assets/img/Product/@item.Image" alt="Alternate Text" />
+        </a>
+        <a style="font-size:15px;padding-left:30px" asp-controller="shop" asp-action="Shopdetail" asp-route-id="@item.Id">@item.Name</a>
+        <a style="font-size:18px;padding-left:30px" asp-controller="shop" asp-action="Shopdetail" asp-route-id="@item.Id">$@item.Price</a>
+    </div>
+</li>}

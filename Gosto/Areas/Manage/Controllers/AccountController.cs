@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -320,6 +321,7 @@ namespace Gosto.Areas.Manage.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+ 
 
         //public async Task<IActionResult> CreateRole()
         //{

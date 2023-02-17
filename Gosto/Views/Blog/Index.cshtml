@@ -31,7 +31,7 @@
                             </a>
                         </div>
                         <div class="card-body">
-                            <span class="blog-category"><a href="" tabindex="0">@blog.BlogCategory</a></span>
+                            <span class="blog-category"><a href="" tabindex="0">@blog.BlogCategory.Name</a></span>
                             <a asp-controller="blog" asp-action="blogdetail" asp-route-id="@blog.Id"><h5 class="card-title">@blog.Title</h5></a>
                             <p class="card-text">
                                 @if (blog.Description1.Length > 60)
@@ -46,32 +46,42 @@
                         </div>
                     </div>
                 </div>}
-                   </div>
+
+                    <div class="col-lg-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                @if (ViewBag.pageIndex > 1)
+                                {
+                    <li class="page-item"><a class="page-link" asp-controller="blog" asp-action="index" asp-route-pageIndex="@ViewBag.pageIndex-1)">Previous</a></li>}
+                                @for (int i = 1; i <= ViewBag.totalpages; i++)
+                                {
+                    <li class="page-item"><a class="page-link" asp-controller="blog" asp-action="index" asp-route-pageIndex="@i">@i</a></li>}
+
+                                @if (ViewBag.pageIndex < ViewBag.totalPages)
+                                {
+                    <li class="page-item"><a class="page-link" asp-controller="blog" asp-action="index" asp-route-pageIndex="@(ViewBag.pageIndex+1)">Next</a></li>}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
 
 
                     <div class="col-lg-4">
                         <div class="blog-sidebar right ms-5">
-                            <div class="single-blog-widget mb-47">
-                                <h3>search</h3>
-                                <div class="blog-search">
-
-                                    <form id="search" action="#">
-                                        <input style="outline:none" class="text-start searchInput" type="search" placeholder="Search blog" name="search" />
-                                    </form>
-                                    <ul class="searchList container" id="searcPar" style="background-color:white;z-index:123;width:70%;height:auto;text-decoration:none !important;border:1px solid;position:absolute;">
-                                    </ul>
-
-                                </div>
-                            </div>
+                   
                             <div class="single-blog-widget mt-5 category mb-47">
                                 <h4>Categories</h4>
                                 <ul>
+
                                     @foreach (var blogCategory in Model.BlogCategories)
                                     {
+                                    @if (blogCategory.Blogs.Count() > 0)
+                                    {
 
+                                  
 
                         <li><a asp-controller="blog" asp-action="CategoryFindBlog" asp-route-id="@blogCategory.Id">@blogCategory.Name (@blogCategory.Blogs.Count())</a></li>}
-
+                                    }
                                 </ul>
                             </div>
             
@@ -81,9 +91,10 @@
 
                                     @foreach (var bTag in Model.BTags)
                                     {
-                        <a asp-controller="blog" asp-action="tagfindblog" asp-route-id="@bTag.Id">@bTag.Name</a>}
-
-                                </div>
+                            
+                                <a asp-controller="blog" asp-action="tagfindblog" asp-route-id="@bTag.Id">@bTag.Name</a>}
+                                        
+                                            </div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +102,7 @@
                 </div>
         </div>
     </div>
-
+    </section>
 
 
 

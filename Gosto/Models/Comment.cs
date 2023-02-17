@@ -12,7 +12,7 @@ namespace Gosto.Models
         [Required]
         [StringLength(maximumLength: 350)]
         public string Message { get; set; }
-        [Required]
+  
         [StringLength(maximumLength: 60)]
         public string Subject { get; set; }
 

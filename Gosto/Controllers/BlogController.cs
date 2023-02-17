@@ -1,6 +1,7 @@
 ﻿using Gosto.DAL;
 using Gosto.Models;
 using Gosto.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ namespace Gosto.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex)
         {
 
             BlogVM blogVM = new BlogVM
@@ -37,10 +38,20 @@ namespace Gosto.Controllers
                 BTags = await _context.BTags.Where(b => b.IsDeleted == false).ToListAsync(),
                 Blogs = await _context.Blogs
          
-            .Where(b => b.IsDeleted == false).Take(3).ToListAsync(),
+            .Where(b => b.IsDeleted == false).ToListAsync(),
 
 
             };
+
+            int totalPages = (int)Math.Ceiling((decimal)blogVM.Blogs.Count() / 7);
+            if (pageIndex < 1 || pageIndex > totalPages)
+            {
+                pageIndex = 1;
+            }
+
+            blogVM.Blogs = blogVM.Blogs.Skip((pageIndex - 1) * 3).Take(8).ToList();
+            ViewBag.totalpages = totalPages;
+            ViewBag.pageIndex = pageIndex;
 
             return View(blogVM);
         }
@@ -56,19 +67,13 @@ namespace Gosto.Controllers
             BlogVM blogVM = new BlogVM
             {
                 Blog = await _context.Blogs
-                .Include(b=> b.BlogCategory)
-                .Include(b=> b.BlogTags)
-                .ThenInclude(bt=> bt.BTag)
+                .Include(b => b.BlogCategory)
+                .Include(b => b.BlogTags)
+                .ThenInclude(bt => bt.BTag)
                 .Include(b => b.Comments)
                 .ThenInclude(c => c.AppUser)
-                .FirstOrDefaultAsync(b=> b.IsDeleted == false && b.Id == id),
-                BlogCategories = await _context.BlogCategories.Include(b=> b.Blogs).Where(b=> b.IsDeleted == false).ToListAsync(),
-                BTags = await _context.BTags.Where(b=> b.IsDeleted == false).ToListAsync(),
-                Blogs = await _context.Blogs
-                .Include(b => b.Comments)
-                .ThenInclude(c => c.AppUser)
-                .Where(b=> b.IsDeleted == false).Take(3).ToListAsync(),
-              
+                .FirstOrDefaultAsync(b => b.IsDeleted == false && b.Id == id),
+        
 
             };
 
@@ -149,51 +154,58 @@ namespace Gosto.Controllers
         {
 
 
-            IEnumerable<SearchVM> blogs = await _context.Blogs
-                .Where(c => c.Title.ToLower().Contains(search.ToLower()))
-                .OrderByDescending(p => p.Id)
-                .Take(3)
-                   .Select(x => new SearchVM
-                   {
-                       Id = x.Id,
-                       Name = x.Title,
-                       Image = x.Image
-                   })
-                   .ToListAsync();
+            IEnumerable<SearchVM> products = await _context.Products
+               .Where
+               (p => id != null ? p.ProductCategoryId == id : true
+              && p.Title.ToLower().Contains(search.ToLower())
+                  || p.Brand.Name.ToLower().Contains(search.ToLower()))
+               .OrderByDescending(p => p.Id)
+               .Take(3)
+                  .Select(x => new SearchVM
+                  {
+                      Id = x.Id,
+                      Name = x.Title,
+                      Image = x.MainImage,
+                      Price = x.Price
+                  })
+                  .ToListAsync();
 
 
-            return View("_BlogSearchPartialView", blogs);
+            return View("_SearchPartialView", products);
         }
 
-        public async Task<IActionResult> AddComment(string Subject, string Message, int BlogId)
-        {
-            //return Json(Subject);
-            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (!ModelState.IsValid) return Json(StatusCode(400));
 
+        [Authorize]
+        [AutoValidateAntiforgeryToken]
+        [HttpPost]
+
+        public async Task<IActionResult> AddComment(Comment comment)
+        {
+        
+     
+        
+
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            //if (!ModelState.IsValid) return RedirectToAction("BlogDetail", "Blog", new { id = comment.BlogId });
+            if (!_context.Blogs.Any(f => f.Id == comment.BlogId)) return NotFound();
             Comment cmnt = new Comment
             {
+                Message = comment.Message,
+            
+                BlogId = comment.BlogId,
+                CreatAt = DateTime.Now,
                 AppUserId = user.Id,
-                BlogId = BlogId,
-                CreatedTime = DateTime.Now,
-                Message = Message,
-                Subject = Subject,
-                IsAccepted = true
+                IsAccepted = true,
             };
             _context.Comments.Add(cmnt);
             _context.SaveChanges();
-            BlogVM blog = new BlogVM
-            {
-                Blog = _context.Blogs.Include(b => b.Comments).ThenInclude(b => b.Blog).FirstOrDefault(b => b.Id == BlogId)
-            };
-
-
-            return PartialView("_BlogCommentPartialView", blog);
+            return RedirectToAction("BlogDetail", "Blog", new { id = comment.BlogId });
 
 
         }
 
-
+        [Authorize]
+    
         public async Task<IActionResult> DeleteComment(int id)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);

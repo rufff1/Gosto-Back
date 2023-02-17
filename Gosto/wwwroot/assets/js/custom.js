@@ -27,6 +27,7 @@ $(document).ready(() => {
     })
 
 
+
     $(".addtobasket").click(function (e) {
         e.preventDefault();
 

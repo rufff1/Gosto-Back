@@ -4,6 +4,7 @@ using Gosto.Models;
 using Gosto.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -29,7 +30,8 @@ namespace Gosto.Services
             _userManager = userManager;
          
         }
-    
+
+
 
         public async Task<IEnumerable<BasketVM>> GetBasketVMsAsync()
         {
@@ -63,5 +65,7 @@ namespace Gosto.Services
         {
             return await _context.Settings.ToDictionaryAsync(s => s.Key, s => s.Value);
         }
+
+        
     }
 }

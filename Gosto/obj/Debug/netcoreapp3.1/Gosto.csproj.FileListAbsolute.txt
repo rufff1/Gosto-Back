@@ -162,7 +162,6 @@ C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Contac
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\BlogDetail.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\CategoryFindBlog.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Blog\TagFindBlog.cshtml.g.cs
-C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogSearchPartialView.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductListPartial.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shop\ShopDetail.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_Layout.cshtml.g.cs
@@ -246,3 +245,4 @@ C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Accoun
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Account\ProfileEdit.cshtml.g.cs
 C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Index.cshtml.g.cs
+C:\Users\ROG\source\repos\Gosto\Gosto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartialView.cshtml.g.cs

@@ -13,5 +13,7 @@ namespace Gosto.Models
         public string Name { get; set; }
 
         public IEnumerable<BlogTag> BlogTags { get; set; }
+
+      
     }
 }
