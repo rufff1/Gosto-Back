@@ -340,7 +340,7 @@ namespace Gosto.Areas.Manage.Controllers
         //        Name = "Rufat",
         //        UserName = "rufff"
         //    };
-
+        //appUser.EmailConfirmed = true;
         //    //AppUser appUser = await _userManager.FindByEmailAsync("rr.rufff@code.az");
 
         //    await _userManager.CreateAsync(appUser, "Rufff123");

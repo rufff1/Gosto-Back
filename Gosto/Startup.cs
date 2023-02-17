@@ -47,6 +47,8 @@ namespace Gosto
             });
 
             services.AddHttpContextAccessor();
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IFileService, FileService>();
 
             services.AddIdentity<AppUser, IdentityRole>(options =>
             {
@@ -72,6 +74,7 @@ namespace Gosto
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseStaticFiles();
 

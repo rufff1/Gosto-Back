@@ -24,22 +24,21 @@
                                 <h5>PRODUCT CATEGORIES</h5>
                             </div>
                             <div class="bdy">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">
-                                        <a href="">All Categories (@Model.Products.Count())</a>
-                                    </label>
-                                </div>   @foreach (var productCategory in Model.ProductCategories)
+                            
+                                      
+                           
+                                   
+      
+                                @foreach (var productCategory in Model.ProductCategories)
                                 {
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox">
-                            <a href="">@productCategory.Name (@productCategory.Products.Count())</a>
-                        </label>
-                    </div>}
 
+                            @if (productCategory.Products.Count() > 0)
+                            {
 
-                            </div>
+                            <a asp-controller="shop" asp-action="CategoryFindproduct" asp-route-id="@productCategory.Id" class="d-block" style="cursor:pointer; font-size:15px; margin-bottom:10px;">@productCategory.Name (@productCategory.Products.Count())</a>}
+
+                                }
+                                        </div>
                         </div>
                     </div>
 
@@ -53,15 +52,12 @@
                             <div class="bdy">
                                 @foreach (var brand in Model.Brands)
                                 {
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox">
-                            <a href="">@brand.Name</a>
-                        </label>
-                    </div>}
+                       
 
+                            <a asp-controller="shop" asp-action="BrandFindproduct" asp-route-id="@brand.Id" class="d-block" style="cursor:pointer; font-size:15px; margin-bottom:10px;"> @brand.Name</a>}
 
-                            </div>
+                                
+                                        </div>
                         </div>
 
                     </div>
@@ -77,19 +73,14 @@
 
                                 @foreach (var color in Model.Colors)
                                 {
-                    <div class="chk align-items-center">
-                        <div class="sb-checkbox">
-                            <input type="checkbox" class="sb-checkbox__input" id="@color.Id" name="@color.Name">
-                            <label class="sb-checkbox__label sb-checkbox__label--@color.Name.ToLower()" for="@color.Name">
-                            </label>
-                        </div>
-                        <a href="">@color.Name</a>
-                    </div>
-                                    <br>}
+                        
+                            <a  asp-controller="shop" asp-action="colorfindproduct" asp-route-id="@color.Id" class="d-block" style="cursor:pointer; font-size:15px; margin-bottom:8px;">@color.Name</a>
+
+                                                <br>}
+                                
 
 
-
-                            </div>
+                                        </div>
 
 
                         </div>
@@ -98,41 +89,7 @@
 
                     <hr>
 
-                    <div class="price">
-                        <div class="box">
-                            <div class="txt align-items-center d-flex justify-content-between pb-3">
-                                <h5>FILTER BY PRICE</h5>
-                            </div>
-                            <div class="bdy">
-
-                                <price-range currency="$">
-                                    <div>
-                                        <div>
-                                            <input name="price-from"
-                                                   type="range"
-                                                   min="0"
-                                                   max="1000"
-                                                   step="1"
-                                                   value="25"
-                                                   aria-label="From" />
-                                            <input name="price-to"
-                                                   type="range"
-                                                   min="0"
-                                                   max="1000"
-                                                   step="1"
-                                                   value="75"
-                                                   aria-label="To" />
-                                        </div>
-                                    </div>
-                                    <output>
-                                        output
-                                    </output>
-                                </price-range>
-
-
-                            </div>
-                        </div>
-                    </div>
+             
 
 
 
@@ -142,15 +99,7 @@
                 </div>
 
                 <div class="col-lg-9">
-                    <div class="result text-end">
-                        <span>Showing 1-12 of 84 results</span>
-                        <select class="ms-4 " name="" id="">
-                            <option selected value="">Short by Latest</option>
-                            <option value="">Short by Oldest</option>
-                            <option value="">Short by Name</option>
-                            <option value="">Short by Price</option>
-                        </select>
-                    </div>
+              
 
                     <div class="product mt-5">
                         <div class="row">

@@ -40,13 +40,8 @@ namespace Gosto.DAL
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-
-
-
-
-
-
-
+        public DbSet<Basket> Baskets { get; set; }
+       
 
 
 

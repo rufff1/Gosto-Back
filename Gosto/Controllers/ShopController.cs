@@ -30,7 +30,7 @@ namespace Gosto.Controllers
                 Products = await _context.Products
               .Include(p => p.ProductColors)
               .ThenInclude(p => p.Color)
-              .Where(p => p.IsDeleted == false && p.IsSellingProduct).ToListAsync(),
+              .Where(p => p.IsDeleted == false).ToListAsync(),
                 Brands = await _context.Brands.Where(n => n.IsDeleted == false).ToListAsync(),
                 Colors = await _context.Colors.Where(n => n.IsDeleted == false).ToListAsync(),
 
@@ -92,6 +92,121 @@ namespace Gosto.Controllers
             return View(shopVM);
         }
 
-  
+
+        public async Task<IActionResult> CategoryFindProduct(int? id)
+        {
+
+            ShopVM shopVM = new ShopVM
+            {
+
+                ProductCategories = await _context.ProductCategories
+           .Include(pt => pt.Products).Where(c => c.IsDeleted == false).ToListAsync(),
+
+                Products = await _context.Products
+           .Include(p => p.ProductColors)
+           .ThenInclude(p => p.Color)
+           .Include(p=> p.Brand)
+           .Where(p => p.IsDeleted == false && p.ProductCategoryId == id).ToListAsync(),
+                Brands = await _context.Brands.Where(n => n.IsDeleted == false).ToListAsync(),
+                Colors = await _context.Colors.Where(n => n.IsDeleted == false).ToListAsync(),
+
+
+
+
+            };
+
+
+
+            if (shopVM.Products.Count() < 1)
+            {
+                return NotFound("Bu categoriyaya aid blog tapilmadi");
+            }
+
+            if (shopVM.Products == null)
+            {
+                return NotFound("Id tapilmadi");
+            }
+
+            return View(shopVM);
+        }
+
+        public async Task<IActionResult> BrandFindProduct(int? id)
+        {
+
+            ShopVM shopVM = new ShopVM
+            {
+
+                ProductCategories = await _context.ProductCategories
+           .Include(pt => pt.Products).Where(c => c.IsDeleted == false).ToListAsync(),
+
+                Products = await _context.Products
+           .Include(p => p.ProductColors)
+           .ThenInclude(p => p.Color)
+           .Include(p => p.Brand)
+           .Where(p => p.IsDeleted == false && p.BrandId == id).ToListAsync(),
+                Brands = await _context.Brands.Where(n => n.IsDeleted == false).ToListAsync(),
+                Colors = await _context.Colors.Where(n => n.IsDeleted == false).ToListAsync(),
+
+
+
+
+            };
+
+
+
+            if (shopVM.Products.Count() < 1)
+            {
+                return NotFound("Bu categoriyaya aid blog tapilmadi");
+            }
+
+            if (shopVM.Products == null)
+            {
+                return NotFound("Id tapilmadi");
+            }
+
+            return View(shopVM);
+        }
+
+        public async Task<IActionResult> ColorFindProduct(int? id)
+        {
+
+
+            ShopVM shopVM = new ShopVM
+            {
+
+                ProductCategories = await _context.ProductCategories
+              .Include(pt => pt.Products).Where(c => c.IsDeleted == false).ToListAsync(),
+
+                Products = await _context.Products
+              .Include(p => p.ProductColors)
+              .ThenInclude(p => p.Color)
+              .Where(p => p.IsDeleted == false && p.ProductColors.Any(bt => bt.ColorId == id)).ToListAsync(),
+                Brands = await _context.Brands.Where(n => n.IsDeleted == false).ToListAsync(),
+                Colors = await _context.Colors.Where(n => n.IsDeleted == false).ToListAsync(),
+
+
+
+
+            };
+
+
+
+      
+
+
+
+            if (shopVM.Colors.Count() < 1)
+            {
+                return NotFound("Bu taga aid blog tapilmadi");
+            }
+
+            if (shopVM.Colors == null)
+            {
+                return NotFound("Id tapilmadi");
+            }
+
+
+            return View(shopVM);
+        }
     }
 }

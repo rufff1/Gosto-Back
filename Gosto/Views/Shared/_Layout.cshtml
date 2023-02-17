@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="~/assets/css/style.css">
+    @RenderSection("Link", required: false)
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
@@ -117,7 +118,12 @@
 
                                                     </div>
                                                 </li>
+                                                <li class="menu-item">
+                                                    <div class="left">
+                                                        <a asp-controller="account" asp-action="forgotpassword">Profile</a>
 
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -256,11 +262,11 @@
                             <div class="db-contect-account text-start">
                                 @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
                                 {
-                                <a asp-area="manage" asp-controller="dashboard">Manage</a>
-
-                                }
+                            <a asp-area="manage" asp-controller="dashboard">Manage</a>}
                                 <a asp-controller="account" asp-action="profile">My Profile</a>
                                 <a asp-controller="account" asp-action="profileedit">Profile Edit</a>
+                                
+
                                 <a asp-controller="account" asp-action="logout">Sign Out</a>
                             </div>
                         </div> }

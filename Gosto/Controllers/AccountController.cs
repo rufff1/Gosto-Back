@@ -18,6 +18,8 @@ using Newtonsoft.Json;
 using Gosto.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Gosto.Helpers;
+using Gosto.Interfaces;
+
 
 namespace Gosto.Controllers
 {
@@ -28,14 +30,20 @@ namespace Gosto.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private IWebHostEnvironment _env;
         private readonly AppDbContext _context;
+        private readonly IEmailService _emailService;
+        private readonly IFileService _fileService;
 
-        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env, AppDbContext context)
+
+
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env, AppDbContext context,IEmailService emailService,IFileService fileService)
         {
             _roleManager = roleManager;
             _signInManager = signInManager;
             _userManager = userManager;
             _env = env;
             _context = context;
+            _emailService = emailService;
+            _fileService = fileService;
         }
         public IActionResult Index()
         {
@@ -102,7 +110,23 @@ namespace Gosto.Controllers
 
 
             await _userManager.AddToRoleAsync(appUser, "Member");
-            return RedirectToAction("login");
+            string token = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
+
+            string link = Url.Action(nameof(ConfirmEmail), "Account", new { userId = appUser.Id, token },
+               Request.Scheme, Request.Host.ToString());
+
+            string body = string.Empty;
+            string path = "wwwroot/assets/Templates/verify.html";
+            string subject = "Verify Email";
+
+            body = _fileService.ReadFile(path, body);
+
+            body = body.Replace("{{link}}", link);
+            body = body.Replace("{{FullName}}", appUser.Name);
+
+            _emailService.Send(appUser.Email, subject, body, null);
+
+            return RedirectToAction(nameof(VerifyEmail));
 
 
         }
@@ -139,6 +163,8 @@ namespace Gosto.Controllers
                 return View(loginVM);
             }
             await _signInManager.PasswordSignInAsync(appUser, loginVM.Password, loginVM.RememberMe, true);
+
+
             return RedirectToAction("Index", "Home");
 
         }
@@ -309,7 +335,98 @@ namespace Gosto.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPassword)
+        {
+            if (!ModelState.IsValid) return View();
+
+            AppUser existUser = await _userManager.FindByEmailAsync(forgotPassword.Email);
+
+            if (existUser == null)
+            {
+                ModelState.AddModelError("Email", "User not Found!");
+                return View();
+            }
+
+            string token = await _userManager.GeneratePasswordResetTokenAsync(existUser);
+
+            string link = Url.Action(nameof(ResetPassword), "Account", new { userId = existUser.Id, token },
+                Request.Scheme, Request.Host.ToString());
+
+
+            string body = string.Empty;
+            string path = "wwwroot/assets/templates/verify.html";
+            string subject = "Verify password reset Email";
+
+            body = _fileService.ReadFile(path, body);
+
+            body = body.Replace("{{link}}", link);
+            body = body.Replace("{{FullName}}", existUser.Name);
+
+            _emailService.Send(existUser.Email, subject, body);
+
+            return RedirectToAction(nameof(VerifyEmail));
+        }
+
+
+
+        [HttpGet]
+        public IActionResult ResetPassword(string userId, string token)
+        {
+            return View(new ResetPasswordVM { UserId = userId, Token = token });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPassword)
+        {
+            if (!ModelState.IsValid) return View(resetPassword);
+
+            AppUser existUser = await _userManager.FindByIdAsync(resetPassword.UserId);
+
+            if (existUser == null) return NotFound();
+
+            if (await _userManager.CheckPasswordAsync(existUser, resetPassword.Password))
+            {
+                ModelState.AddModelError("", "Your password already exist!");
+                return View(resetPassword);
+            }
+
+
+            await _userManager.ResetPasswordAsync(existUser, resetPassword.Token, resetPassword.Password);
+
+            return RedirectToAction("Login", "Account");
+        }
+
+
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null) return BadRequest();
+
+            AppUser user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null) return NotFound();
+
+            await _userManager.ConfirmEmailAsync(user, token);
+
+            await _signInManager.SignInAsync(user, false);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        public IActionResult VerifyEmail()
+        {
+            return View();
+        }
 
 
 

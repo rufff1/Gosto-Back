@@ -29,6 +29,9 @@ namespace Gosto.Models
         public string PasswordResetToken { get; set; }
         public bool isConfirmed { get; set; }
         public string ConnectionId { get; set; }
+        public IEnumerable<Basket> Baskets { get; set; }
+
+
 
     }
 }
